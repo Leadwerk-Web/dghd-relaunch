@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dghd · Gestaltungsgrundlagen für die neue Website</title>
+<link rel="icon" href="assets/dghd-bildmarke.svg">
+<link rel="stylesheet" href="assets/dghd.css">
+<style>
+.kopf{position:sticky;top:0;z-index:20;background:rgba(252,251,245,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+.kopf .in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+.kopf img{height:40px}
+.kopf nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14.5px}
+.kopf nav a{color:var(--tinte);text-decoration:none}
+.kopf nav a:hover{color:var(--rot)}
+main{max-width:1180px;margin:0 auto;padding:0 24px 80px}
+section{padding:72px 0 8px;border-bottom:1px solid var(--linie)}
+.nr{font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rot);margin-bottom:14px}
+h2{font-size:clamp(30px,4vw,44px)}
+h3{font-size:22px;margin-top:28px}
+.lead{font-size:21px;line-height:1.55;max-width:760px;color:#3a3450}
+.spalten{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.drei{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.vier{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:860px){.spalten,.drei,.vier{grid-template-columns:1fr}}
+.klein{font-size:15px;color:var(--grau)}
+.titel{padding:88px 0 64px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;border-bottom:1px solid var(--linie)}
+.titel h1{font-size:clamp(40px,6vw,72px);margin-bottom:22px}
+.titel .meta{font-size:15px;color:var(--grau);margin-top:28px;line-height:1.8}
+@media(max-width:860px){.titel{grid-template-columns:1fr}}
+.zitat{font-family:var(--serif);font-size:24px;line-height:1.45;border-left:5px solid var(--gelb);padding:6px 0 6px 22px;margin:28px 0;color:var(--lila)}
+.gegenueber{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--linie);border-radius:16px;overflow:hidden;background:#fff}
+.gegenueber>div{padding:22px 26px}
+.gegenueber>div+div{border-left:1px solid var(--linie);background:var(--karton)}
+.gegenueber h4{font-size:15px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--grau)}
+.gegenueber ul{margin:0;padding-left:18px}
+.gegenueber li{margin:6px 0}
+@media(max-width:860px){.gegenueber{grid-template-columns:1fr}.gegenueber>div+div{border-left:0;border-top:1px solid var(--linie)}}
+.feld{background:#fff;border:1px solid var(--linie);border-radius:16px;padding:28px}
+.farbe{border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--linie)}
+.farbe .flaeche{height:130px;display:flex;align-items:flex-end;padding:14px;font:600 14px var(--sans)}
+.farbe .text{padding:14px 16px;font-size:14.5px;line-height:1.5}
+.farbe b{display:block;font-size:16px;margin-bottom:4px}
+.verhaeltnis{display:flex;height:34px;border-radius:10px;overflow:hidden;margin:14px 0 6px}
+.verhaeltnis span{display:flex;align-items:center;justify-content:center;font:600 12px var(--sans)}
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--linie);vertical-align:top}
+th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--grau)}
+.ok{color:#2f7a45;font-weight:600}.nein{color:var(--rot);font-weight:600}
+.typo-probe{background:#fff;border:1px solid var(--linie);border-radius:16px;padding:30px}
+.dont{position:relative;background:#fff;border:1px solid var(--linie);border-radius:14px;padding:18px;height:170px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.dont::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1.5px),rgba(167,37,58,.75) calc(50% - 1.5px),rgba(167,37,58,.75) calc(50% + 1.5px),transparent calc(50% + 1.5px))}
+.dont+p{font-size:14.5px;margin:8px 2px 0;color:var(--grau)}
+.schutz{position:relative;background:#fff;border:1px solid var(--linie);border-radius:16px;padding:40px 30px}
+.icon-reihe{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.icon-reihe figure{margin:0;background:#fff;border:1px solid var(--linie);border-radius:14px;padding:18px 10px;text-align:center;font-size:13.5px;color:var(--grau)}
+.icon-reihe svg{width:46px;height:46px;margin:0 auto 8px;display:block}
+@media(max-width:860px){.icon-reihe{grid-template-columns:repeat(3,1fr)}}
+/* Beispielausschnitt Website */
+.beispiel{background:var(--papier);border:1px solid var(--linie);border-radius:18px;overflow:hidden;position:relative}
+.beispiel .leiste{height:34px;background:#EDEBE3;display:flex;align-items:center;gap:6px;padding:0 14px}
+.beispiel .leiste i{width:10px;height:10px;border-radius:50%;background:#cfcabb;display:block}
+.beispiel .flaeche{padding:46px 48px 56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;position:relative;overflow:hidden}
+@media(max-width:860px){.beispiel .flaeche{grid-template-columns:1fr;padding:28px}}
+.fotofeld{aspect-ratio:4/3;border-radius:var(--radius);background:
+  radial-gradient(circle at 30% 35%,rgba(255,255,255,.25) 0 60px,transparent 61px),
+  linear-gradient(135deg,#5b4a7e,#2E1F52);display:flex;align-items:flex-end;padding:18px;color:#fff;font-size:13px}
+.hinweis{font-size:13px;color:var(--grau);margin-top:8px}
+.fuss{max-width:1180px;margin:0 auto;padding:36px 24px 60px;font-size:14px;color:var(--grau);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="kopf"><div class="in">
+  <a href="index.html"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
+  <nav>
+    <a href="#idee">Idee</a><a href="#wandel">Von heute zu morgen</a><a href="#logo">Logo</a><a href="#farben">Farben</a><a href="#schrift">Schrift</a><a href="#elemente">Gestaltungselemente</a><a href="#bilder">Bilder</a><a href="#icons">Piktogramme</a><a href="#bewegung">Bewegung</a><a href="#zugang">Barrierefreiheit</a>
+  </nav>
+</div></header>
+
+<main>
+
+<div class="titel">
+  <div>
+    <div class="nr">Website-Relaunch dghd.de</div>
+    <h1>Gestaltungs&shy;grundlagen</h1>
+    <p class="lead">Ein kurzes Handbuch für die neue Website: wie Logo, Farben, Schrift und die neuen Kartenformen zusammenspielen, und warum. Es baut auf dem auf, was die dghd seit 2018 für ihr Erscheinungsbild festgelegt hat, und auf der Bildmarke 2026.</p>
+    <div class="meta">Version 1.0, Entwurf zur Abstimmung · Stand 23.09.2026<br>Grundlage: Bildmarke 2026 mit Hilfslinien und Farbangaben, CI-Aktualisierungen 2018, 2021 und 2022, Beschreibung der Bildmarke, Menü-Prototyp, Zielgruppenbeschreibung, Absprachen im Kickoff und im Jour fixe</div>
+  </div>
+  <div class="kartenrahmen" style="max-width:360px;justify-self:center">
+    <div class="inhalt" style="padding:44px"><img src="assets/dghd-bildmarke.svg" alt="Bildmarke der dghd"></div>
+  </div>
+</div>
+
+<!-- 1 -->
+<section id="idee">
+  <div class="nr">01 · Die Idee</div>
+  <h2>Zwei Karten, ein gemeinsamer Raum</h2>
+  <div class="spalten">
+    <div>
+      <p class="lead">Die Hochschuldidaktik steht auf zwei Säulen, Forschung und Anwendung. Keine trägt ohne die andere. Die Bildmarke zeigt genau das: zwei Moderationskarten, wie sie in jedem hochschuldidaktischen Workshop an der Wand hängen.</p>
+      <p>Die rote Karte steht für die Forschung, die gelbe für die Anwendung. Wo sie sich überlagern, entsteht ein heller dritter Raum. Das ist der Ort, an dem die dghd arbeitet: zwischen Erkenntnis und Praxis.</p>
+      <p>Das Gelb ist dabei kein Zufall. Es erinnert an den Arbeitskreis Hochschuldidaktik (AHD), aus dem die dghd hervorgegangen ist, und holt dessen Akzentfarbe wieder nach vorn. Die Wortmarke bleibt unverändert und steht weiter für Tradition und Bodenständigkeit.</p>
+    </div>
+    <div>
+      <div class="zitat">Dynamik durch Schräglage, Stabilität durch die Wortmarke, Transparenz durch Überlagerung.</div>
+      <p class="klein">Aus der Beschreibung der Bildmarke. Die drei Begriffe sind die Messlatte für jede Gestaltungsentscheidung auf der Website: Bewegt sich etwas, bleibt die Struktur trotzdem ruhig? Ist nachvollziehbar, wie Inhalte zusammenhängen?</p>
+      <p>Für die Website heißt das: Die Karten sind nicht nur Logo, sie werden zum Baustein. Bilder bekommen einen Kartenrahmen, Teaser sehen aus wie Moderationskarten, und Hervorhebungen nutzen den hellen dritten Raum.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="wandel">
+  <div class="nr">02 · Von heute zu morgen</div>
+  <h2>Was bleibt, was sich ändert</h2>
+  <p class="lead">Die heutige Seite ist über Jahre gewachsen. Sie hat eine klare Farbwelt, aber keine eigene Formensprache: Symbole aus einer Standardbibliothek, graue Kästen, ein illustriertes Titelbild ohne Bezug zur dghd.</p>
+  <figure style="margin:26px 0 10px"><img src="bilder/heute-dghd-startseite.png" alt="Startseite dghd.de, Stand September 2026" style="border-radius:14px;border:1px solid var(--linie)"><figcaption class="hinweis">dghd.de heute, Stand 23.09.2026</figcaption></figure>
+  <div class="gegenueber" style="margin-top:26px">
+    <div><h4>Das bleibt</h4><ul>
+      <li>Die Wortmarke dghd und der Namenszug, unverändert.</li>
+      <li>Rot und Gelb als Hauptfarben der dghd.</li>
+      <li>Die Schriftfamilien Literata und Noto Sans. Sie sind heute schon auf der Seite im Einsatz, der Wechsel bleibt also für Stammleser vertraut.</li>
+      <li>Das gelbe Band als Erkennungszeichen, künftig schmaler und gezielter.</li>
+    </ul></div>
+    <div><h4>Das ändert sich</h4><ul>
+      <li>Rot wird tiefer: #A7253A statt #B8394A, abgestimmt auf die Bildmarke.</li>
+      <li>Neu: ein tiefes Lila (#2E1F52) als ruhiger Grundton für dunkle Flächen, Fußbereich und Navigation.</li>
+      <li>Statt Standardsymbolen eigene Piktogramme, abgeleitet aus der Kartenform.</li>
+      <li>Statt grauer Kästen Moderationskarten mit farbiger Kante.</li>
+      <li>Statt eines austauschbaren Titelbilds echte Inhalte vorn: Tagung, Stellen, Zielgruppen.</li>
+      <li>Größere Grundschrift (18 px) und mehr Weißraum, gut lesbar auch auf dem Smartphone.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="logo">
+  <div class="nr">03 · Logo</div>
+  <h2>Aufbau, Schutzzone, Einsatz</h2>
+  <div class="spalten">
+    <div>
+      <h3 style="margin-top:0">Aufbau</h3>
+      <table>
+        <tr><th>Element</th><th>Festlegung</th></tr>
+        <tr><td>Rote Karte (Forschung)</td><td>#A7253A, um 2,5° nach links geneigt</td></tr>
+        <tr><td>Gelbe Karte (Anwendung)</td><td>#E8C02C, um 5° nach rechts geneigt</td></tr>
+        <tr><td>Überlagerung (dritter Raum)</td><td>Verlauf vertikal von Weiß #FFFFFF zu Hellgelb #FFFFB0, Mitte bei 60 %</td></tr>
+        <tr><td>Wortmarke</td><td>dghd in Rot, darunter der Namenszug in zwei Zeilen</td></tr>
+        <tr><td>Maßeinheit</td><td>Die Höhe der Bildmarke (H) ist das Maß für alle Abstände</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Schutzzone</h3>
+      <div class="schutz">
+        <svg viewBox="0 0 1000 380" width="100%" role="img" aria-label="Logo mit Schutzzone">
+          <rect x="10" y="10" width="980" height="360" rx="10" fill="#FFFFB0" opacity=".55"/>
+          <rect x="10" y="10" width="980" height="360" rx="10" fill="none" stroke="#A7253A" stroke-dasharray="8 7" stroke-width="2"/>
+          <image href="assets/dghd-logo-zuschnitt.svg" x="120" y="115" width="760" height="199"/>
+          <line x1="60" y1="10" x2="60" y2="115" stroke="#2E1F52" stroke-width="2"/><text x="72" y="70" font-size="30" font-weight="600" fill="#2E1F52" font-family="Noto Sans">½ H</text>
+          <line x1="60" y1="314" x2="60" y2="370" stroke="#2E1F52" stroke-width="2"/><text x="72" y="350" font-size="30" font-weight="600" fill="#2E1F52" font-family="Noto Sans">½ H</text>
+          <line x1="10" y1="340" x2="120" y2="340" stroke="#2E1F52" stroke-width="2"/><text x="44" y="330" font-size="30" font-weight="600" fill="#2E1F52" font-family="Noto Sans">½ H</text>
+        </svg>
+      </div>
+      <p class="klein">Um das Logo bleibt auf allen Seiten ein freier Raum von einer halben Bildmarkenhöhe. Kein Text, kein Bildrand und keine andere Marke ragt hinein. So war es in den Hilfslinien zur Bildmarke angelegt.</p>
+    </div>
+  </div>
+
+  <h3>Varianten</h3>
+  <div class="drei">
+    <div class="feld" style="display:flex;align-items:center;justify-content:center;min-height:180px"><img src="assets/dghd-logo-zuschnitt.svg" alt="Logo positiv" style="max-height:92px"></div>
+    <div class="feld" style="background:var(--lila);display:flex;align-items:center;justify-content:center;min-height:180px"><img src="assets/dghd-logo-negativ.svg" alt="Logo negativ" style="max-height:92px"></div>
+    <div class="feld" style="display:flex;align-items:center;justify-content:center;gap:26px;min-height:180px">
+      <img src="assets/dghd-bildmarke.svg" alt="Bildmarke" style="height:96px">
+      <div style="width:92px;height:92px;border-radius:22px;background:var(--lila);display:flex;align-items:center;justify-content:center"><img src="assets/dghd-bildmarke.svg" alt="" style="height:66px"></div>
+    </div>
+  </div>
+  <div class="drei klein" style="margin-top:8px"><p>Positiv auf Weiß oder Papier. Standard für Kopfbereich und Dokumente.</p><p>Negativ auf Lila. Wortmarke weiß, die Karten behalten ihre Farben.</p><p>Nur die Bildmarke: Favicon, Profilbild in sozialen Netzwerken, App-Symbol. Ab einer Breite unter 120 px.</p></div>
+
+  <h3>Bitte nicht</h3>
+  <div class="vier">
+    <div><div class="dont"><img src="assets/dghd-bildmarke.svg" alt="" style="height:100px;transform:rotate(25deg)"></div><p>Die Bildmarke drehen oder spiegeln. Die Neigung der Karten ist festgelegt.</p></div>
+    <div><div class="dont"><img src="assets/dghd-bildmarke.svg" alt="" style="height:100px;filter:hue-rotate(160deg)"></div><p>Die Kartenfarben tauschen oder umfärben.</p></div>
+    <div><div class="dont"><img src="assets/dghd-logo-zuschnitt.svg" alt="" style="width:88%;transform:scaleX(1.35)"></div><p>Das Logo verzerren oder die Teile neu anordnen.</p></div>
+    <div><div class="dont" style="background:linear-gradient(135deg,#7a9e6a,#d7b067,#8a5a88)"><img src="assets/dghd-logo-zuschnitt.svg" alt="" style="width:88%"></div><p>Das Logo ohne ruhige Fläche auf unruhige Bilder setzen.</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="farben">
+  <div class="nr">04 · Farben</div>
+  <h2>Vier Kernfarben, klar verteilt</h2>
+  <p class="lead">Rot und Gelb tragen die Marke, Lila gibt Tiefe und Ruhe, Hellgelb öffnet den dritten Raum. Das Lila ist ein Vorschlag aus der Geschäftsstelle und passt, weil es den warmen Farben einen kühlen, seriösen Gegenpol gibt.</p>
+  <div class="vier" style="margin-top:24px">
+    <div class="farbe"><div class="flaeche" style="background:#A7253A;color:#fff">Rot · Forschung</div><div class="text"><b>#A7253A</b>RGB 167 37 58<br>Wortmarke, Links, Schaltflächen, Überschriften-Akzente. Weiße Schrift auf Rot erfüllt AA und AAA (7,1 : 1).</div></div>
+    <div class="farbe"><div class="flaeche" style="background:#E8C02C;color:#2E1F52">Gelb · Anwendung</div><div class="text"><b>#E8C02C</b>RGB 232 192 44<br>Akzente, Marker, Kanten der Moderationskarten, gelbe Schaltfläche. Nie als Schriftfarbe auf Weiß (1,8 : 1).</div></div>
+    <div class="farbe"><div class="flaeche" style="background:#2E1F52;color:#FFFFB0">Lila · Grundton</div><div class="text"><b>#2E1F52</b>RGB 46 31 82<br>Dunkle Flächen, Fußbereich, Navigation, Überschriften auf hellem Grund. Auf Weiß 14,6 : 1.</div></div>
+    <div class="farbe"><div class="flaeche" style="background:#FFFFB0;color:#2E1F52;border-bottom:1px solid var(--linie)">Hellgelb · dritter Raum</div><div class="text"><b>#FFFFB0</b>RGB 255 255 176<br>Hervorgehobene Flächen, Schlagworte, Verlauf der Überlagerung. Lila und Rot darauf gut lesbar.</div></div>
+  </div>
+  <h3>Verteilung auf einer Seite</h3>
+  <div class="verhaeltnis">
+    <span style="flex:60;background:var(--papier);border:1px solid var(--linie);color:var(--grau)">Papier und Weiß 60 %</span>
+    <span style="flex:22;background:var(--lila);color:#fff">Lila 22 %</span>
+    <span style="flex:10;background:var(--rot);color:#fff">Rot 10 %</span>
+    <span style="flex:8;background:var(--gelb);color:var(--lila)">Gelb 8 %</span>
+  </div>
+  <p class="klein">Richtwert, keine Regel. Wichtig ist, dass Gelb selten bleibt. Dann wirkt es als Signal.</p>
+  <h3>Ergänzend</h3>
+  <div class="spalten">
+    <table>
+      <tr><th>Farbe</th><th>Wert</th><th>Einsatz</th></tr>
+      <tr><td><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#1D1830;vertical-align:-2px"></span> Tinte</td><td>#1D1830</td><td>Fließtext</td></tr>
+      <tr><td><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#FCFBF5;border:1px solid #ccc;vertical-align:-2px"></span> Papier</td><td>#FCFBF5</td><td>Seitenhintergrund</td></tr>
+      <tr><td><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#3B5BB8;vertical-align:-2px"></span> Blau</td><td>#3B5BB8</td><td>nur Grafiken und Diagramme</td></tr>
+      <tr><td><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#5AA75C;vertical-align:-2px"></span> Grün</td><td>#5AA75C</td><td>nur Grafiken und Diagramme</td></tr>
+    </table>
+    <p>Blau und Grün kommen aus der CI-Ergänzung von 2022 und bleiben, wie dort festgelegt, sparsam: für Schaubilder, Diagramme und Flächen zur Gliederung. In der Oberfläche der Website tauchen sie nicht auf. Schwarz und Weiß sind neutral und immer erlaubt.</p>
+  </div>
+  <h3>Lesbarkeit der Kombinationen</h3>
+  <table>
+    <tr><th>Schrift auf Fläche</th><th>Kontrast</th><th>für Fließtext</th></tr>
+    <tr><td>Tinte auf Papier</td><td>16,1 : 1</td><td class="ok">ja</td></tr>
+    <tr><td>Lila auf Weiß</td><td>14,6 : 1</td><td class="ok">ja</td></tr>
+    <tr><td>Hellgelb auf Lila</td><td>14,1 : 1</td><td class="ok">ja</td></tr>
+    <tr><td>Weiß auf Rot</td><td>7,1 : 1</td><td class="ok">ja</td></tr>
+    <tr><td>Lila auf Gelb</td><td>8,4 : 1</td><td class="ok">ja</td></tr>
+    <tr><td>Gelb auf Weiß</td><td>1,8 : 1</td><td class="nein">nein, nur als Fläche oder Linie</td></tr>
+    <tr><td>Rot auf Lila</td><td>2,1 : 1</td><td class="nein">nein</td></tr>
+  </table>
+</section>
+
+<!-- 5 -->
+<section id="schrift">
+  <div class="nr">05 · Schrift</div>
+  <h2>Literata für Haltung, Noto Sans für Klarheit</h2>
+  <div class="spalten">
+    <div class="typo-probe">
+      <div class="klein" style="margin-bottom:10px">Literata · Überschriften</div>
+      <div style="font-family:var(--serif);font-size:46px;line-height:1.1;font-weight:600">Zwischen Anspruch und Wirklichkeit</div>
+      <div style="font-family:var(--serif);font-size:24px;margin-top:14px;font-style:italic;color:var(--rot)">Blickwinkel</div>
+      <div class="klein" style="margin:22px 0 10px">Noto Sans · Fließtext und Oberfläche</div>
+      <p style="margin:0">Die dghd ist die wissenschaftliche Fachgesellschaft für alle, die an Hochschulen lehren, forschen und Lehre gestalten.</p>
+    </div>
+    <div>
+      <p>Beide Schriften sind heute schon auf dghd.de im Einsatz. Literata ist eine Leseschrift mit ruhigen Serifen, die gut zur Wortmarke passt und in Überschriften Haltung zeigt. Noto Sans ist für Bildschirme gebaut, sehr gut lesbar und deckt alle Sprachen ab, auch bei Namen aus internationalen Kooperationen.</p>
+      <p>Beide sind frei verfügbar und werden auf dem eigenen Server eingebunden, ohne Verbindung zu externen Schriftdiensten.</p>
+      <table>
+        <tr><th>Ebene</th><th>Schrift</th><th>Größe</th></tr>
+        <tr><td>Seitentitel</td><td>Literata 600</td><td>48 bis 64 px</td></tr>
+        <tr><td>Abschnitt</td><td>Literata 600</td><td>32 bis 40 px</td></tr>
+        <tr><td>Kartentitel</td><td>Literata 600</td><td>22 px</td></tr>
+        <tr><td>Fließtext</td><td>Noto Sans 400</td><td>18 px, Zeilenabstand 1,6</td></tr>
+        <tr><td>Oberfläche, Schlagworte</td><td>Noto Sans 600</td><td>13 bis 16 px</td></tr>
+      </table>
+      <p class="klein">Das Wort <em>Blick</em>winkel behält seine kursive Auszeichnung aus der heutigen Navigation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="elemente">
+  <div class="nr">06 · Gestaltungselemente aus der Bildmarke</div>
+  <h2>Die Karten werden zum Baustein</h2>
+  <p class="lead">Aus der Bildmarke leiten sich fünf Elemente ab. Sie tauchen auf jeder Seite auf und machen die Website wiedererkennbar, ohne dass überall das Logo stehen muss.</p>
+
+  <div class="drei" style="margin-top:30px">
+    <div>
+      <div class="kartenrahmen"><div class="inhalt fotofeld" style="background:linear-gradient(135deg,#6b5a8f,#2E1F52)">Bild im Kartenrahmen</div></div>
+      <h3>1 · Kartenrahmen</h3>
+      <p>Bilder liegen auf den beiden Karten, rot oben rechts, gelb unten links, mit der Neigung aus der Bildmarke. Für das wichtigste Bild einer Seite, nicht für jedes.</p>
+    </div>
+    <div>
+      <div class="modkarte" style="margin:18px 0 26px"><span class="schlagwort">Veranstaltungsreihe</span><h3 style="margin:14px 0 8px;font-size:22px">Forum Weiterbildung</h3><p style="margin:0;font-size:16px">Kollegialer Austausch im Sinne einer Community of Practice.</p></div>
+      <h3>2 · Moderationskarte</h3>
+      <p>Teaser für Beiträge, Termine und Stellen. Weiß, weich gerundet, mit einer farbigen Kante oben wie ein Klebestreifen. Die Farbe der Kante folgt der Kategorie.</p>
+    </div>
+    <div>
+      <div style="position:relative;height:196px;margin:18px 0 26px;border-radius:16px;background:var(--lila);overflow:hidden">
+        <div class="randkarte" style="background:var(--rot);right:-120px;top:-80px;transform:rotate(-2.5deg)"></div>
+        <div class="randkarte" style="background:var(--gelb);right:-90px;top:60px;transform:rotate(5deg);opacity:.95"></div>
+        <div style="position:absolute;left:24px;bottom:22px;color:#fff;font-family:var(--serif);font-size:24px;z-index:2">Randelement</div>
+      </div>
+      <h3>3 · Randelement</h3>
+      <p>Angeschnittene Karten am Rand dunkler Flächen. Sie geben Tiefe, ohne Inhalt zu verdecken, etwa im Kopf einer Themenseite oder im Fußbereich.</p>
+    </div>
+  </div>
+  <div class="drei" style="margin-top:10px">
+    <div>
+      <div style="margin:18px 0 26px;padding:26px;border-radius:var(--radius);background:var(--dritter-raum);border:1px solid #efe9a8"><div class="klein" style="color:var(--lila)">Dritter Raum</div><div style="font-family:var(--serif);font-size:24px;color:var(--lila);margin-top:6px">Wo Forschung und Anwendung sich treffen</div></div>
+      <h3>4 · Dritter Raum</h3>
+      <p>Der helle Verlauf aus der Überlagerung wird zur Fläche für das Wichtigste: Hinweise, Zitate, der Aufruf zur Mitgliedschaft.</p>
+    </div>
+    <div>
+      <p style="margin:18px 0 26px;font-family:var(--serif);font-size:30px;line-height:1.3">Wissen entsteht <span class="marker">im Austausch</span>.</p>
+      <h3>5 · Textmarker</h3>
+      <p>Gelb unter einem Wort, wie mit dem Textmarker auf einer Karte. Höchstens einmal pro Abschnitt, sonst verliert es seine Wirkung.</p>
+    </div>
+    <div>
+      <div style="display:flex;gap:12px;margin:18px 0 26px">
+        <div style="width:110px;height:110px;border-radius:22px;background:var(--lila);display:flex;align-items:center;justify-content:center"><img src="assets/dghd-bildmarke.svg" alt="" style="height:78px"></div>
+        <div style="width:110px;height:110px;border-radius:22px;background:var(--hellgelb);display:flex;align-items:center;justify-content:center"><img src="assets/dghd-bildmarke.svg" alt="" style="height:78px"></div>
+      </div>
+      <h3>Quadratische Formate</h3>
+      <p>Profilbilder für Mastodon, LinkedIn und YouTube zeigen nur die Bildmarke auf Lila oder Hellgelb. Die Ecken sind wie bei den Karten gerundet.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px">So fügt sich das in die Website</h3>
+  <p>Ein Ausschnitt der Startseite: Bild im Kartenrahmen, Moderationskarten als Teaser, Randelement im dunklen Bereich, Textmarker in der Überschrift.</p>
+  <div class="beispiel">
+    <div class="leiste"><i></i><i></i><i></i></div>
+    <div class="flaeche">
+      <div>
+        <span class="schlagwort rot">Fachtagung 2027</span>
+        <h2 style="font-size:40px;margin:16px 0 14px">Zwischen Anspruch und <span class="marker">Wirklichkeit</span></h2>
+        <p style="margin:0 0 22px">09. bis 11. Februar 2027, zum ersten Mal in Österreich. Der Call for Papers ist offen, neu gibt es auch einen Call for Keynotes.</p>
+        <a class="knopf" href="#">Zum Call for Papers</a> <a class="knopf leer" href="#">Programm</a>
+      </div>
+      <div class="kartenrahmen"><div class="inhalt fotofeld" style="background:linear-gradient(160deg,#8b7aa9,#2E1F52 70%)">Foto von der letzten Fachtagung</div></div>
+    </div>
+    <div style="background:var(--lila);position:relative;overflow:hidden;padding:40px 48px 46px">
+      <div class="randkarte" style="background:var(--rot);right:-80px;top:-90px;transform:rotate(-2.5deg)"></div>
+      <div class="randkarte" style="background:var(--gelb);right:-40px;top:20px;transform:rotate(5deg)"></div>
+      <div style="color:var(--hellgelb);font:600 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px">Aus der Fachgesellschaft</div>
+      <div class="drei" style="position:relative;max-width:88%">
+        <div class="modkarte"><span class="schlagwort">Themenreihe</span><h4 style="margin:12px 0 6px;font-size:19px">Gesellschaftliche Bildung</h4><p style="margin:0;font-size:15px">Demokratie, Zivilcourage, Nachhaltigkeit und KI-Ethik als Thema der Hochschuldidaktik.</p></div>
+        <div class="modkarte rot"><span class="schlagwort rot">Kommission</span><h4 style="margin:12px 0 6px;font-size:19px">AKKO</h4><p style="margin:0;font-size:15px">Akkreditierung hochschuldidaktischer Angebote für gute Lehre.</p></div>
+        <div class="modkarte lila"><span class="schlagwort lila">Stellenbörse</span><h4 style="margin:12px 0 6px;font-size:19px">Neue Stellen</h4><p style="margin:0;font-size:15px">Aktuelle Ausschreibungen aus Hochschuldidaktik und Lehrentwicklung.</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="hinweis">Beispielhafte Inhalte, angelehnt an die heutige Startseite.</p>
+</section>
+
+<!-- 7 -->
+<section id="bilder">
+  <div class="nr">07 · Bilder</div>
+  <h2>Echte Momente statt Hörsaal-Klischee</h2>
+  <div class="spalten">
+    <div>
+      <p class="lead">Hochschuldidaktik ist schwer zu fotografieren. Lehre, Forschung und Beratung sind Gespräche, keine Produkte. Deshalb braucht die Seite eine Bildsprache, die mit wenigen Fotos auskommt.</p>
+      <h3>Was fotografiert wird</h3>
+      <ul>
+        <li>Arbeitssituationen: Hände an der Pinnwand, Karten, Tafelbilder, Gruppen im Gespräch.</li>
+        <li>Menschen aus der Community bei Tagungen und Netzwerktreffen, mit Einverständnis.</li>
+        <li>Orte der Hochschuldidaktik: Zentren, Werkstätten, Seminarräume, keine leeren Hörsäle.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Wenn es kein Foto gibt</h3>
+      <ul>
+        <li><b>Typografische Karte:</b> Titel in Literata auf Hellgelb oder Lila, mit Bildmarken-Ausschnitt am Rand.</li>
+        <li><b>Zitat statt Bild:</b> ein Satz aus dem Beitrag, groß gesetzt im dritten Raum.</li>
+        <li><b>Porträt im Kartenrahmen:</b> Autorinnen und Autoren statt Symbolbild.</li>
+      </ul>
+      <h3>Was wir vermeiden</h3>
+      <ul>
+        <li>Austauschbare Stockfotos von Hörsälen und lachenden Studierenden.</li>
+        <li>Illustrierte Stimmungsbilder ohne Bezug zur dghd.</li>
+        <li>Symbolbilder, die in jeder anderen Fachgesellschaft genauso stehen könnten.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="icons">
+  <div class="nr">08 · Piktogramme</div>
+  <h2>Eigene Zeichen statt Symbolbibliothek</h2>
+  <p class="lead">Die Standardsymbole der heutigen Seite sollen nicht mehr verwendet werden. Stattdessen eine kleine Reihe eigener Piktogramme: feine Linie, gerundete Ecken, die Kartenform als Grundgestalt.</p>
+  <div class="icon-reihe" style="margin-top:22px">
+    <figure><svg viewBox="0 0 48 48" fill="none" stroke="#2E1F52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="30" height="28" rx="6" transform="rotate(-2.5 22 24)"/><path d="M13 6v8M31 6v8M8 19h29"/><rect x="24" y="26" width="9" height="7" rx="2" fill="#E8C02C" stroke="none"/></svg>Veranstaltung</figure>
+    <figure><svg viewBox="0 0 48 48" fill="none" stroke="#2E1F52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="15" width="32" height="23" rx="6"/><path d="M18 15v-4a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4"/><path d="M8 25h32" stroke="#E8C02C"/></svg>Stellenbörse</figure>
+    <figure><svg viewBox="0 0 48 48" fill="none" stroke="#2E1F52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 41s12-11 12-21a12 12 0 0 0-24 0c0 10 12 21 12 21z"/><rect x="19" y="14" width="10" height="10" rx="3" fill="#A7253A" stroke="none" transform="rotate(-2.5 24 19)"/></svg>Didaktik-Landkarte</figure>
+    <figure><svg viewBox="0 0 48 48" fill="none" stroke="#2E1F52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="20" height="20" rx="5" transform="rotate(-2.5 16 22)"/><rect x="20" y="17" width="20" height="20" rx="5" transform="rotate(5 30 27)" fill="#FFFFB0"/></svg>Community</figure>
+    <figure><svg viewBox="0 0 48 48" fill="none" stroke="#2E1F52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="7" width="26" height="34" rx="5"/><path d="M17 16h14M17 22h14M17 28h9"/><path d="M11 12h-2" stroke="#E8C02C"/></svg>Publikation</figure>
+    <figure><svg viewBox="0 0 48 48" fill="none" stroke="#2E1F52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="17" r="7"/><path d="M11 40c1.5-8 7-12 13-12s11.5 4 13 12"/><path d="M33 9l2 2 4-4" stroke="#A7253A"/></svg>Mitglied werden</figure>
+  </div>
+  <p class="klein" style="margin-top:12px">Linie in Lila, ein Akzent in Rot oder Gelb pro Zeichen. Die Reihe wird mit der Umsetzung vervollständigt.</p>
+</section>
+
+<!-- 9 -->
+<section id="bewegung">
+  <div class="nr">09 · Bewegung</div>
+  <h2>Die Bildmarke erklärt sich selbst</h2>
+  <div class="spalten">
+    <div>
+      <p>Zur Bildmarke gibt es eine kurze Animation: Die beiden Karten gleiten aufeinander zu, benennen Forschung und Anwendung, und in der Überlagerung erscheint der dritte Raum. Von den beiden Fassungen ist Version 2 gesetzt.</p>
+      <p>Die Animation erklärt das Logo, sie ist kein Schmuck. Deshalb läuft sie an einer Stelle: auf der Seite „Die dghd“, dort, wo Profil und Auftrag erklärt werden. Sie startet, wenn sie ins Bild scrollt, läuft einmal und bleibt dann stehen.</p>
+    </div>
+    <div class="feld">
+      <h3 style="margin-top:0">Regeln für Bewegung</h3>
+      <ul style="margin:0;padding-left:18px">
+        <li>Bewegung nur dort, wo sie etwas erklärt.</li>
+        <li>Moderationskarten neigen sich beim Überfahren leicht, um höchstens einen Grad.</li>
+        <li>Wer im Betriebssystem reduzierte Bewegung eingestellt hat, sieht alles ohne Animation.</li>
+        <li>Nichts blinkt, nichts läuft endlos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="zugang" style="border-bottom:0">
+  <div class="nr">10 · Barrierefreiheit</div>
+  <h2>Für alle lesbar</h2>
+  <div class="vier">
+    <div class="feld"><h3 style="margin-top:0;font-size:19px">Kontrast</h3><p style="margin:0;font-size:16px">Alle Textfarben erfüllen mindestens WCAG 2.2 AA. Gelb nie als Schrift auf Hell.</p></div>
+    <div class="feld"><h3 style="margin-top:0;font-size:19px">Schriftgröße</h3><p style="margin:0;font-size:16px">18 px Grundschrift, Zeilen höchstens 75 Zeichen lang, vergrößerbar ohne Umbruchfehler.</p></div>
+    <div class="feld"><h3 style="margin-top:0;font-size:19px">Bedienung</h3><p style="margin:0;font-size:16px">Alles per Tastatur erreichbar, sichtbarer Fokusrahmen in Gelb, Menü mit klarer Reihenfolge.</p></div>
+    <div class="feld"><h3 style="margin-top:0;font-size:19px">Inhalte</h3><p style="margin:0;font-size:16px">Alternativtexte für jedes Bild, Überschriften in richtiger Reihenfolge, PDFs möglichst barrierearm.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="fuss">
+  <span>dghd · Gestaltungsgrundlagen für die neue Website · Version 1.0 · Stand 23.09.2026</span>
+  <span>Erstellt von der Leadwerk GmbH, Karlsruhe, für die Deutsche Gesellschaft für Hochschuldidaktik e.V.</span>
+</footer>
+</body>
+</html>

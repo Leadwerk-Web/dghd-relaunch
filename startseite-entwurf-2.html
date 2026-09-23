@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dghd · Startseite Entwurf 2 · Bühne</title>
+<link rel="icon" href="assets/dghd-bildmarke.svg">
+<link rel="stylesheet" href="assets/dghd.css">
+<style>
+.breite{max-width:1240px;margin:0 auto;padding:0 32px}
+/* Kopf */
+.oben{background:var(--lila);color:#fff;position:relative;overflow:hidden}
+.band{height:6px;background:var(--gelb)}
+.kopf{display:flex;align-items:center;gap:36px;padding:22px 0;position:relative;z-index:5}
+.kopf img{height:52px}
+.menue{display:flex;gap:4px;margin-left:auto;align-items:center}
+.menue>a,.menue>div>a{color:#fff;text-decoration:none;font-weight:500;font-size:16px;padding:10px 14px;border-radius:999px;display:block}
+.menue>a:hover,.menue>div>a:hover,.menue .aktiv>a{background:rgba(255,255,255,.12)}
+.menue .login{border:1.5px solid rgba(255,255,255,.4);margin-left:8px}
+.menue .suche{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);margin-left:4px}
+/* Aufklappmenü nach Davids Regel: bis drei Punkte nach unten */
+.menue>div{position:relative}
+.klapp{position:absolute;top:100%;left:0;background:#fff;border-radius:14px;padding:10px;min-width:250px;box-shadow:0 20px 40px -18px rgba(0,0,0,.5);display:none;z-index:40}
+.menue>div:hover .klapp{display:block}
+.klapp a{display:block;color:var(--tinte);text-decoration:none;padding:9px 12px;border-radius:8px;font-size:15.5px}
+.klapp a:hover{background:var(--karton);color:var(--rot)}
+.buehne{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;padding:64px 0 96px;position:relative;z-index:2}
+.buehne h1{color:#fff;font-size:clamp(46px,6.4vw,92px);line-height:1.02;letter-spacing:-.02em;margin:0 0 26px}
+.buehne h1 em{font-style:italic;color:var(--gelb);font-weight:400}
+.buehne p{font-size:20px;color:#dcd6ea;max-width:560px}
+.grossekarten{position:absolute;right:-120px;top:110px;width:640px;height:640px;z-index:1;pointer-events:none}
+.grossekarten div{position:absolute;border-radius:88px}
+.grossekarten .r{width:430px;height:430px;background:var(--rot);right:70px;top:10px;transform:rotate(-2.5deg)}
+.grossekarten .g{width:430px;height:430px;background:var(--gelb);right:200px;top:150px;transform:rotate(5deg)}
+.grossekarten .d{width:300px;height:290px;right:200px;top:150px;transform:rotate(5deg);background:var(--dritter-raum);border-radius:70px}
+.tagungskarte{background:#fff;border-radius:20px;padding:26px;color:var(--tinte);max-width:380px;margin-left:auto;margin-top:210px;position:relative;z-index:3;box-shadow:0 30px 50px -30px rgba(0,0,0,.6)}
+.tagungskarte .kl{font:600 12.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--rot)}
+.tagungskarte h3{font-size:24px;margin:10px 0 8px}
+.tagungskarte .dat{font-family:var(--serif);font-size:20px;color:var(--lila);margin-bottom:12px}
+/* Zielgruppen als Reiter */
+.reiter-bereich{background:var(--papier);padding:70px 0 40px}
+.reiter{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 0}
+.reiter button{font:600 16px var(--sans);border:2px solid var(--lila);background:transparent;color:var(--lila);padding:12px 18px;border-radius:999px;cursor:pointer}
+.reiter button[aria-selected=true]{background:var(--lila);color:#fff}
+.reiter-inhalt{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.reiter-inhalt a{display:block;background:#fff;border-radius:16px;padding:22px;text-decoration:none;color:var(--tinte);border:1px solid var(--linie);transition:transform .2s}
+.reiter-inhalt a:hover{transform:translateY(-3px)}
+.reiter-inhalt small{color:var(--grau);font-size:13px}
+.reiter-inhalt h4{font-size:21px;margin:6px 0 6px}
+.reiter-inhalt p{margin:0;font-size:15.5px}
+.h2gross{font-size:clamp(32px,4vw,52px);margin:0}
+.ueber{font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rot);margin-bottom:14px}
+/* Blickwinkel als Magazin */
+.magazin{padding:70px 0}
+.mag-raster{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;margin-top:28px}
+.aufmacher .bild{aspect-ratio:16/10;border-radius:var(--radius);background:linear-gradient(135deg,#FFFFB0,#E8C02C 60%,#A7253A);position:relative;overflow:hidden}
+.aufmacher .bild span{position:absolute;left:28px;bottom:26px;right:28px;font-family:var(--serif);font-size:30px;line-height:1.2;color:var(--lila)}
+.aufmacher h3{font-size:30px;margin:22px 0 10px}
+.mag-liste article{padding:20px 0;border-top:1px solid var(--linie)}
+.mag-liste article:first-child{border-top:0;padding-top:0}
+.mag-liste h4{font-size:21px;margin:8px 0 6px}
+.mag-liste p{margin:0;font-size:15.5px;color:#4a4460}
+/* Zahlenband */
+.zahlen{background:var(--hellgelb);border-top:1px solid #eee59a;border-bottom:1px solid #eee59a}
+.zahlen .breite{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:40px;padding-bottom:40px}
+.zahlen b{display:block;font-family:var(--serif);font-size:54px;line-height:1;color:var(--lila)}
+.zahlen span{font-size:15.5px;color:#4a4460}
+/* Termine und Stellen */
+.doppel{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:70px 0}
+.zeile{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--linie);text-decoration:none;color:var(--tinte)}
+.zeile .d{font-family:var(--serif);font-size:30px;line-height:1;color:var(--rot)}
+.zeile .d small{display:block;font-family:var(--sans);font-size:13px;color:var(--grau);margin-top:4px}
+.zeile h4{font-family:var(--sans);font-weight:600;font-size:17px;margin:0 0 4px}
+.zeile p{margin:0;font-size:14.5px;color:var(--grau)}
+.stelle{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-top:1px solid var(--linie);text-decoration:none;color:var(--tinte)}
+.stelle h4{font-family:var(--sans);font-weight:600;font-size:17px;margin:0 0 4px}
+.stelle p{margin:0;font-size:14.5px;color:var(--grau)}
+.stelle .frist{white-space:nowrap;font-size:14px;color:var(--lila);background:var(--lila-hell);padding:4px 10px;border-radius:6px;align-self:start}
+/* Mitglied */
+.mitgliedband{background:var(--rot);color:#fff;position:relative;overflow:hidden}
+.mitgliedband .breite{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding-top:56px;padding-bottom:56px;position:relative;z-index:2}
+.mitgliedband h2{color:#fff;font-size:clamp(28px,3.4vw,44px);margin:0 0 10px}
+footer{background:var(--lila);color:#d9d3e6;padding:56px 0 28px}
+footer .spalten{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:30px}
+footer h5{font-family:var(--sans);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--hellgelb);margin:0 0 12px}
+footer a{color:#fff;text-decoration:none;display:block;padding:3px 0;font-size:15.5px}
+footer a:hover{color:var(--gelb)}
+footer .unten{border-top:1px solid rgba(255,255,255,.18);margin-top:40px;padding-top:18px;display:flex;justify-content:space-between;font-size:13.5px;flex-wrap:wrap;gap:12px}
+.entwurfshinweis{position:fixed;right:16px;bottom:16px;z-index:50;background:#fff;color:var(--lila);border-radius:12px;padding:10px 14px;font-size:13px;box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
+@media(max-width:980px){.menue>a,.menue>div{display:none}.buehne,.mag-raster,.doppel,.mitgliedband .breite{grid-template-columns:1fr}.grossekarten{opacity:.35}.reiter-inhalt,.zahlen .breite{grid-template-columns:1fr 1fr}footer .spalten{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="oben">
+  <div class="band"></div>
+  <div class="grossekarten" aria-hidden="true"><div class="r"></div><div class="g"></div><div class="d"></div></div>
+  <div class="breite">
+    <header class="kopf">
+      <a href="#"><img src="assets/dghd-logo-negativ.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
+      <nav class="menue" aria-label="Hauptnavigation">
+        <div><a href="#">Community</a><div class="klapp"><a href="#">Arbeitsgruppen</a><a href="#">Netzwerke</a><a href="#">Kommissionen</a><a href="#">Nachwuchs</a><a href="#">Mitgliedschaft</a></div></div>
+        <div><a href="#">Wissenschaft &amp; Praxis</a><div class="klapp"><a href="#">Forschung</a><a href="#">Praxis &amp; Qualitätsentwicklung</a><a href="#">Themen</a><a href="#">Publikationen &amp; Wissen</a></div></div>
+        <div><a href="#">Veranstaltungen</a><div class="klapp"><a href="#">Veranstaltungskalender</a><a href="#">dghd-Jahrestagung</a><a href="#">Veranstaltung einreichen</a></div></div>
+        <div><a href="#"><em>Blick</em>winkel</a></div>
+        <div><a href="#">Die dghd</a></div>
+        <a class="login" href="#">Login</a>
+        <span class="suche" aria-label="Suche"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span>
+      </nav>
+    </header>
+    <section class="buehne">
+      <div>
+        <div class="ueber" style="color:var(--gelb)">Fachgesellschaft für Hochschuldidaktik</div>
+        <h1>Forschung trifft <em>Anwendung.</em></h1>
+        <p>Seit Jahrzehnten bringt die dghd zusammen, wer Lehre an Hochschulen erforscht, gestaltet und begleitet. Im deutschsprachigen Raum, offen für alle, die gute Lehre ernst nehmen.</p>
+        <p style="margin-top:30px"><a class="knopf gelb" href="#">Mitglied werden</a> &nbsp; <a class="knopf leer" href="#" style="color:#fff;border-color:rgba(255,255,255,.55)">Über die dghd</a></p>
+      </div>
+      <div>
+        <aside class="tagungskarte">
+          <div class="kl">Fachtagung 2027 · Österreich</div>
+          <h3>Zwischen Anspruch und Wirklichkeit</h3>
+          <div class="dat">09. bis 11. Februar 2027</div>
+          <p style="font-size:15.5px;color:#4a4460;margin:0 0 16px">Call for Papers und Call for Keynotes sind offen.</p>
+          <a class="knopf" href="#">Zum Call</a>
+        </aside>
+      </div>
+    </section>
+  </div>
+</div>
+
+<section class="reiter-bereich">
+  <div class="breite">
+    <div class="ueber">Für Sie zusammengestellt</div>
+    <h2 class="h2gross">Womit können wir Ihnen helfen?</h2>
+    <div class="reiter" role="tablist">
+      <button role="tab" aria-selected="true" data-zg="lehrende">Ich lehre</button>
+      <button role="tab" aria-selected="false" data-zg="forschende">Ich forsche</button>
+      <button role="tab" aria-selected="false" data-zg="professionals">Ich arbeite in der Hochschuldidaktik</button>
+      <button role="tab" aria-selected="false" data-zg="leitung">Ich leite eine Einrichtung</button>
+    </div>
+    <div class="reiter-inhalt" id="zg-inhalt"></div>
+  </div>
+</section>
+
+<section class="zahlen" aria-label="Die dghd in Zahlen">
+  <div class="breite">
+    <div><b>126</b><span>Einrichtungen auf der Didaktik-Landkarte</span></div>
+    <div><b>15</b><span>Arbeitsgruppen zu Themen der Lehre</span></div>
+    <div><b>7</b><span>Netzwerke von Promovierenden bis Fachhochschulen</span></div>
+    <div><b>2027</b><span>Fachtagung erstmals in Österreich</span></div>
+  </div>
+</section>
+
+<section class="magazin">
+  <div class="breite">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:20px"><div><div class="ueber"><em style="text-transform:none;letter-spacing:0;font-size:15px">Blick</em>winkel</div><h2 class="h2gross">Aus der Fachgesellschaft</h2></div><a href="#" style="font-weight:600">Alle Beiträge →</a></div>
+    <div class="mag-raster">
+      <article class="aufmacher">
+        <div class="bild"><span>„Gesellschaftliche Bildung ist Aufgabe der Hochschuldidaktik.“</span></div>
+        <span class="schlagwort" style="margin-top:20px">Themenreihe 2026</span>
+        <h3>Gesellschaftliche Bildung als Thema der Hochschuldidaktik</h3>
+        <p style="margin:0">Vorträge zu Demokratie, Zivilcourage, Antirassismus, Nachhaltigkeit und KI-Ethik. Alle Termine und Aufzeichnungen der Reihe.</p>
+      </article>
+      <div class="mag-liste">
+        <article><span class="schlagwort rot">Weiterbildungskommission</span><h4>Forum Weiterbildung startet</h4><p>Eine neue Reihe für den kollegialen Austausch im Sinne einer Community of Practice.</p></article>
+        <article><span class="schlagwort lila">AKKO</span><h4>Akkreditierung hochschuldidaktischer Angebote</h4><p>Was die Kommission prüft und wie Einrichtungen sich beteiligen.</p></article>
+        <article><span class="schlagwort">Themenreihe</span><h4>KI in der Hochschullehre</h4><p>Das Dossier bündelt Beiträge, Handreichungen und Termine zum Thema.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;border-top:1px solid var(--linie)">
+  <div class="breite doppel">
+    <div>
+      <div class="ueber">Termine</div><h2 style="font-size:36px">Veranstaltungen</h2>
+      <a class="zeile" href="#"><div class="d">15.10.<small>online</small></div><div><h4>Forum Weiterbildung</h4><p>Weiterbildungskommission · Beispieltermin</p></div></a>
+      <a class="zeile" href="#"><div class="d">12.11.<small>online</small></div><div><h4>Themenreihe Gesellschaftliche Bildung</h4><p>Vortrag und Diskussion · Beispieltermin</p></div></a>
+      <a class="zeile" href="#"><div class="d">09.02.<small>2027</small></div><div><h4>dghd-Fachtagung 2027</h4><p>Österreich · 09. bis 11. Februar</p></div></a>
+      <p style="margin-top:14px"><a href="#">Veranstaltung einreichen →</a></p>
+    </div>
+    <div>
+      <div class="ueber">Stellenbörse</div><h2 style="font-size:36px">Aktuelle Stellen</h2>
+      <a class="stelle" href="#"><div><h4>Referent:in für Lehrentwicklung</h4><p>Zentrum für Lehre · Vollzeit · Beispielanzeige</p></div><span class="frist">bis 31.10.</span></a>
+      <a class="stelle" href="#"><div><h4>Wiss. Mitarbeiter:in Hochschuldidaktik</h4><p>Hochschule · Teilzeit · Beispielanzeige</p></div><span class="frist">bis 15.11.</span></a>
+      <a class="stelle" href="#"><div><h4>Leitung Digitale Lehre</h4><p>Universität · Beispielanzeige</p></div><span class="frist">bis 30.11.</span></a>
+      <p style="margin-top:14px"><a href="#">Stellenangebot einreichen →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="mitgliedband">
+  <div class="randkarte" style="background:var(--gelb);right:-60px;top:-90px;transform:rotate(5deg)"></div>
+  <div class="randkarte" style="background:var(--lila);right:90px;bottom:-150px;transform:rotate(-2.5deg)"></div>
+  <div class="breite">
+    <div><h2>Gestalten Sie die Hochschuldidaktik mit.</h2><p style="margin:0;max-width:620px;color:#fbe7ea">Als Mitglied arbeiten Sie in Arbeitsgruppen und Netzwerken mit, bringen Themen auf die Fachtagung und sind Teil einer Community, die Lehre weiterdenkt.</p></div>
+    <a class="knopf gelb" href="#">Mitglied werden</a>
+  </div>
+</section>
+
+<footer>
+  <div class="breite">
+    <div class="spalten">
+      <div><img src="assets/dghd-logo-negativ.svg" alt="dghd" style="width:240px;margin-bottom:18px"><p style="font-size:15px;max-width:300px">Deutsche Gesellschaft für Hochschuldidaktik e.V.</p></div>
+      <div><h5>Entdecken</h5><a href="#">Community</a><a href="#">Wissenschaft &amp; Praxis</a><a href="#">Veranstaltungen</a><a href="#"><em>Blick</em>winkel</a></div>
+      <div><h5>Service</h5><a href="#">Stellenbörse</a><a href="#">Didaktik-Landkarte</a><a href="#">Downloads</a><a href="#">Kontakt</a></div>
+      <div><h5>Folgen</h5><a href="#">Mastodon · @dghd_info</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div>
+    </div>
+    <div class="unten"><span>Impressum · Datenschutz · Barrierefreiheit · Cookie-Einstellungen</span><a href="design-manual.html" style="display:inline;color:var(--gelb)">Gestaltungsgrundlagen</a></div>
+  </div>
+</footer>
+
+<div class="entwurfshinweis">Entwurf 2 · Bühne · <a href="index.html">Übersicht</a> · <a href="design-manual.html">Gestaltungsgrundlagen</a></div>
+
+<script>
+var ZG={
+ lehrende:[["Standards","Standards für die Praxis","Was gute hochschuldidaktische Arbeit ausmacht."],["Themen","KI in der Hochschullehre","Beiträge, Handreichungen und Termine im Dossier."],["Veranstaltungen","Veranstaltungskalender","Workshops und Vorträge für die eigene Lehre."]],
+ forschende:[["Forschung","Forschungskommission","Hochschuldidaktische Forschung stärken und vernetzen."],["Publikationen","Blickpunkt Hochschuldidaktik","Die Buchreihe der dghd."],["Nachwuchs","dghd-Nachwuchspreis","Für herausragende Arbeiten aus dem Feld."]],
+ professionals:[["Weiterbildung","Weiterbildungskommission","Austausch und Qualität in der Weiterbildung."],["Akkreditierung","AKKO","Hochschuldidaktische Angebote akkreditieren lassen."],["Service","Stellenbörse","Aktuelle Ausschreibungen aus dem Feld."]],
+ leitung:[["Qualität","Akkreditierte Programme","Überblick über akkreditierte Einrichtungen."],["Netzwerk","Didaktik-Landkarte","126 Einrichtungen im deutschsprachigen Raum."],["Austausch","Netzwerktreffen der Hochschuldidaktik","Leitungen im Gespräch."]]
+};
+function zeige(k){document.getElementById('zg-inhalt').innerHTML=ZG[k].map(function(x){return '<a href="#"><small>'+x[0]+'</small><h4>'+x[1]+'</h4><p>'+x[2]+'</p></a>'}).join('');document.querySelectorAll('.reiter button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.zg===k)})}
+document.querySelectorAll('.reiter button').forEach(function(b){b.addEventListener('click',function(){zeige(b.dataset.zg)})});zeige('lehrende');
+</script>
+</body>
+</html>

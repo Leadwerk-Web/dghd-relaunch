@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dghd · Website-Relaunch · Entwürfe</title>
+<link rel="icon" href="assets/dghd-bildmarke.svg">
+<link rel="stylesheet" href="assets/dghd.css">
+<style>
+main{max-width:1180px;margin:0 auto;padding:56px 24px 80px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:46px}
+header img{height:54px}
+h1{font-size:clamp(34px,4.6vw,56px);margin-bottom:12px}
+.lead{font-size:20px;max-width:760px;color:#3a3450}
+.raster{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:34px}
+.kachel{display:block;background:#fff;border:1px solid var(--linie);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--tinte);transition:transform .2s}
+.kachel:hover{transform:translateY(-4px)}
+.kachel .vorschau{aspect-ratio:16/9;background-size:cover;background-position:top center;border-bottom:1px solid var(--linie)}
+.kachel .text{padding:20px 22px}
+.kachel h2{font-size:24px;margin:8px 0 6px}
+.kachel p{margin:0;font-size:16px;color:#4a4460}
+.gross{grid-column:1/-1;display:grid;grid-template-columns:1.1fr .9fr}
+.gross .vorschau{aspect-ratio:auto;min-height:280px;border-bottom:0;border-right:1px solid var(--linie)}
+@media(max-width:860px){.raster,.gross{grid-template-columns:1fr}}
+footer{max-width:1180px;margin:0 auto;padding:0 24px 50px;font-size:14px;color:var(--grau)}
+</style>
+</head>
+<body>
+<main>
+  <header><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"><span class="schlagwort lila">Stand 23.09.2026</span></header>
+  <h1>Website-Relaunch dghd.de</h1>
+  <p class="lead">Gestaltungsgrundlagen, Wireframe und drei Entwürfe für die neue Startseite. Alle Entwürfe folgen denselben Grundlagen und setzen sie unterschiedlich um.</p>
+  <div class="raster">
+    <a class="kachel gross" href="design-manual.html"><div class="vorschau" style="background-image:url(bilder/vorschau-design-manual.png)"></div><div class="text" style="align-self:center"><span class="schlagwort rot">Grundlage</span><h2>Gestaltungsgrundlagen</h2><p>Idee der Bildmarke, Logo und Schutzzone, Farben, Schrift, Gestaltungselemente aus den Moderationskarten, Bildsprache, Piktogramme, Bewegung und Barrierefreiheit.</p></div></a>
+    <a class="kachel" href="startseite-entwurf-1.html"><div class="vorschau" style="background-image:url(bilder/vorschau-entwurf-1.png)"></div><div class="text"><span class="schlagwort">Entwurf 1</span><h2>Pinnwand</h2><p>Seitennavigation nach dem Vorbild NYU, Zielgruppen als angeheftete Moderationskarten, ruhig und hell.</p></div></a>
+    <a class="kachel" href="startseite-entwurf-2.html"><div class="vorschau" style="background-image:url(bilder/vorschau-entwurf-2.png)"></div><div class="text"><span class="schlagwort">Entwurf 2</span><h2>Bühne</h2><p>Dunkler Auftakt in Lila, die Bildmarke groß als Randelement, magazinartiger <em>Blick</em>winkel.</p></div></a>
+    <a class="kachel" href="startseite-entwurf-3.html"><div class="vorschau" style="background-image:url(bilder/vorschau-entwurf-3.png)"></div><div class="text"><span class="schlagwort">Entwurf 3</span><h2>Dritter Raum</h2><p>Die Startseite folgt der Bildmarke: Forschung, Anwendung und die dghd als gemeinsamer Raum in der Mitte.</p></div></a>
+    <a class="kachel" href="wireframe-startseite-v2.html"><div class="vorschau" style="background-image:url(bilder/vorschau-wireframe-v2.png)"></div><div class="text"><span class="schlagwort lila">Struktur</span><h2>Wireframe Startseite, Version 2</h2><p>Aufbau der Startseite mit Einstiegen nach Zielgruppe und ohne öffentlichen Newsletter.</p></div></a>
+  </div>
+</main>
+<footer>Leadwerk GmbH, Karlsruhe, für die Deutsche Gesellschaft für Hochschuldidaktik e.V. · Entwürfe zur Abstimmung, Inhalte teilweise beispielhaft</footer>
+</body>
+</html>

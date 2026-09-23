@@ -1,0 +1,77 @@
+/* dghd Gestaltungsgrundlagen · gemeinsame Werte für Manual und Entwürfe · Stand 23.09.2026 */
+@import url("https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+:root{
+  /* Kernfarben aus der Bildmarke 2026 */
+  --rot:#A7253A;
+  --gelb:#E8C02C;
+  --hellgelb:#FFFFB0;
+  --lila:#2E1F52;
+  --schwarz:#000000;
+  --weiss:#FFFFFF;
+  /* abgeleitete Arbeitsfarben */
+  --tinte:#1D1830;          /* Fließtext, Lila mit Schwarz */
+  --papier:#FCFBF5;         /* warmes Weiß, Hellgelb stark aufgehellt */
+  --karton:#F4F1E6;         /* Flächen, Moderationskarte ohne Farbe */
+  --linie:rgba(29,24,48,.14);
+  --grau:#6A6478;
+  --rot-tief:#861D2E;       /* Hover auf Rot */
+  --lila-hell:#EAE6F2;
+  /* Ergänzungsfarben aus dem CI 2022, nur für Grafiken und Diagramme */
+  --blau:#3B5BB8;
+  --gruen:#5AA75C;
+
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Noto Sans", "Segoe UI", Arial, sans-serif;
+
+  --neigung-rot:-2.5deg;    /* rote Karte, laut Hilfslinien */
+  --neigung-gelb:5deg;      /* gelbe Karte, laut Hilfslinien */
+  --radius:22px;
+  --radius-klein:12px;
+  --dritter-raum:linear-gradient(180deg,#FFFFFF 0%, #FFFFF0 30%, var(--hellgelb) 100%);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-size:18px;line-height:1.6;color:var(--tinte);background:var(--papier)}
+img{max-width:100%;display:block}
+a{color:var(--rot);text-underline-offset:3px}
+a:hover{color:var(--rot-tief)}
+:focus-visible{outline:3px solid var(--gelb);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;letter-spacing:-.01em;margin:0 0 .5em;color:var(--tinte)}
+
+/* Textmarker: Gelb als Hervorhebung unter dem Wort, nicht als Schriftfarbe */
+.marker{background:linear-gradient(transparent 58%, var(--gelb) 58%, var(--gelb) 90%, transparent 90%);padding:0 .08em}
+.marker-hell{background:linear-gradient(transparent 55%, var(--hellgelb) 55%)}
+
+/* Schaltflächen */
+.knopf{display:inline-flex;align-items:center;gap:.5em;font:600 16px/1 var(--sans);padding:14px 22px;border-radius:999px;border:2px solid var(--rot);background:var(--rot);color:#fff;text-decoration:none;transition:background .15s,transform .15s}
+.knopf:hover{background:var(--rot-tief);border-color:var(--rot-tief);color:#fff}
+.knopf.leer{background:transparent;color:var(--rot)}
+.knopf.leer:hover{background:var(--rot);color:#fff}
+.knopf.gelb{background:var(--gelb);border-color:var(--gelb);color:var(--lila)}
+.knopf.gelb:hover{background:#d8ad12;border-color:#d8ad12}
+
+/* Schlagwort (Kategorie, Format, Zielgruppe) */
+.schlagwort{display:inline-block;font:600 12.5px/1 var(--sans);letter-spacing:.03em;padding:6px 10px;border-radius:6px;background:var(--hellgelb);color:var(--lila)}
+.schlagwort.rot{background:#F6E3E6;color:var(--rot)}
+.schlagwort.lila{background:var(--lila-hell);color:var(--lila)}
+
+/* Kartenrahmen: das Bild liegt auf zwei Moderationskarten */
+.kartenrahmen{position:relative;isolation:isolate;margin:18px 22px 26px 18px}
+.kartenrahmen::before,.kartenrahmen::after{content:"";position:absolute;inset:0;border-radius:var(--radius);z-index:-1}
+.kartenrahmen::before{background:var(--rot);transform:translate(14px,-12px) rotate(var(--neigung-rot))}
+.kartenrahmen::after{background:var(--gelb);transform:translate(-12px,14px) rotate(var(--neigung-gelb));opacity:.95}
+.kartenrahmen>img,.kartenrahmen>.inhalt{position:relative;border-radius:var(--radius);width:100%;background:var(--weiss)}
+
+/* Moderationskarte als Teaser */
+.modkarte{position:relative;background:var(--weiss);border-radius:var(--radius-klein);padding:22px 22px 20px;box-shadow:0 1px 0 var(--linie),0 10px 24px -18px rgba(46,31,82,.45);transition:transform .2s}
+.modkarte::before{content:"";position:absolute;left:18px;right:18px;top:0;height:5px;border-radius:0 0 4px 4px;background:var(--gelb)}
+.modkarte.rot::before{background:var(--rot)}
+.modkarte.lila::before{background:var(--lila)}
+@media (hover:hover){.modkarte:hover{transform:rotate(-1deg) translateY(-3px)}}
+
+/* Randelement: Kartenecke am Seitenrand */
+.randkarte{position:absolute;width:220px;height:220px;border-radius:40px;pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

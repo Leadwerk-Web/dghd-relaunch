@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dghd · Startseite Entwurf 3 · Dritter Raum</title>
+<link rel="icon" href="assets/dghd-bildmarke.svg">
+<link rel="stylesheet" href="assets/dghd.css">
+<style>
+body{background:#fff}
+.leiste{display:flex;align-items:center;gap:24px;padding:18px 36px;border-bottom:1px solid var(--linie);background:#fff;position:sticky;top:0;z-index:30}
+.leiste img{height:46px}
+.leiste nav{display:flex;gap:22px;margin-left:auto;font-size:15.5px}
+.leiste nav a{color:var(--tinte);text-decoration:none}
+.leiste nav a:hover{color:var(--rot)}
+.leiste .knopf{padding:11px 18px;font-size:15px}
+/* Frage statt Titelbild */
+.frage{padding:64px 36px 40px;text-align:center;background:var(--papier)}
+.frage h1{font-size:clamp(38px,5vw,64px);max-width:980px;margin:0 auto 18px}
+.frage p{max-width:720px;margin:0 auto 26px;color:#3a3450;font-size:19px}
+.suchfeld{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--lila);border-radius:999px;padding:8px 8px 8px 24px;box-shadow:0 16px 30px -24px rgba(46,31,82,.6)}
+.suchfeld span{flex:1;text-align:left;color:var(--grau)}
+.vorschlaege{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.vorschlaege a{font-size:14.5px;background:#fff;border:1.5px solid var(--linie);border-radius:999px;padding:7px 13px;color:var(--tinte);text-decoration:none}
+/* Die drei Räume */
+.raeume{display:grid;grid-template-columns:1fr 1.15fr 1fr;min-height:760px;position:relative;overflow:hidden}
+.raum{padding:88px 34px 56px;position:relative;transition:opacity .25s,filter .25s}
+.raum.forschung{background:linear-gradient(180deg,#F7E5E8,#F3D9DE)}
+.raum.anwendung{background:linear-gradient(180deg,#FBF1CF,#F7E7AE)}
+.raum.mitte{background:var(--dritter-raum);box-shadow:0 0 0 1px #efe9a8;z-index:2}
+.raeume.fokus-forschung .raum:not(.forschung):not(.mitte),.raeume.fokus-anwendung .raum:not(.anwendung):not(.mitte){opacity:.45;filter:saturate(.6)}
+.raum h2{font-size:clamp(30px,3vw,42px);margin:0 0 6px}
+.raum .unterzeile{font-size:15.5px;color:#4a4460;margin-bottom:24px}
+.raum.forschung h2{color:var(--rot)}
+.raum.anwendung h2{color:#7a5d00}
+.raum.mitte h2{color:var(--lila)}
+.ecke{position:absolute;top:0;width:90px;height:90px;border-radius:0 0 26px 0}
+.forschung .ecke{left:0;background:var(--rot);border-radius:0 0 26px 0;transform-origin:0 0;transform:rotate(-2.5deg) translate(-20px,-20px)}
+.anwendung .ecke{right:0;background:var(--gelb);border-radius:0 0 0 26px;transform-origin:100% 0;transform:rotate(5deg) translate(20px,-24px)}
+.eintrag{display:block;background:#fff;border-radius:14px;padding:18px 18px 16px;margin-bottom:14px;text-decoration:none;color:var(--tinte);box-shadow:0 10px 20px -18px rgba(46,31,82,.6);transition:transform .2s}
+.eintrag:hover{transform:translateX(4px)}
+.eintrag small{display:block;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin-bottom:4px}
+.eintrag h3{font-size:20px;margin:0 0 4px}
+.eintrag p{font-size:15px;margin:0;color:#4a4460}
+.forschung .eintrag{border-left:5px solid var(--rot)}
+.anwendung .eintrag{border-left:5px solid var(--gelb)}
+/* Mitte */
+.tagung{background:var(--lila);color:#fff;border-radius:22px;padding:28px;position:relative;overflow:hidden;margin-bottom:18px}
+.tagung .randkarte{width:170px;height:170px;border-radius:34px}
+.tagung h3{color:#fff;font-size:28px;margin:10px 0 8px;position:relative}
+.tagung p{color:#dcd6ea;position:relative;margin:0 0 16px}
+.tagung .datum{font-family:var(--serif);font-size:44px;line-height:1;color:var(--gelb);position:relative}
+.mitte .zeile{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(46,31,82,.15);text-decoration:none;color:var(--tinte)}
+.mitte .zeile b{font-family:var(--serif);font-size:22px;color:var(--rot);min-width:62px;line-height:1.1}
+.mitte .zeile span{font-size:15.5px}
+.wechsel{display:flex;gap:8px;margin-bottom:22px}
+.wechsel button{font:600 14px var(--sans);border:2px solid var(--lila);background:transparent;color:var(--lila);border-radius:999px;padding:8px 12px;cursor:pointer}
+.wechsel button.an{background:var(--lila);color:#fff}
+/* Zielgruppen */
+.zielgruppen{padding:64px 36px;background:#fff}
+.zielgruppen h2{font-size:clamp(30px,3.4vw,44px);text-align:center}
+.zg-raster{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1240px;margin:26px auto 0;border:1px solid var(--linie);border-radius:22px;overflow:hidden}
+.zg-raster a{padding:28px 24px;text-decoration:none;color:var(--tinte);border-right:1px solid var(--linie);position:relative;background:#fff}
+.zg-raster a:last-child{border-right:0}
+.zg-raster a:hover{background:var(--papier)}
+.zg-raster .balken{height:8px;border-radius:4px;margin-bottom:18px;display:flex;overflow:hidden}
+.zg-raster .balken i{display:block;height:100%}
+.zg-raster h3{font-size:22px;margin:0 0 8px}
+.zg-raster p{font-size:15.5px;margin:0;color:#4a4460}
+.zg-raster .legende{font-size:12.5px;color:var(--grau);margin-top:12px}
+/* Mitglied und Fuß */
+.mitglied{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;max-width:1240px;margin:0 auto 64px;padding:0 36px}
+.mitglied img{width:120px}
+.mitglied h2{font-size:clamp(28px,3vw,40px);margin:0 0 6px}
+footer{background:var(--lila);color:#d9d3e6;padding:44px 36px 26px}
+footer .in{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer a{color:#fff;text-decoration:none;margin-right:18px;font-size:15.5px}
+footer a:hover{color:var(--gelb)}
+.entwurfshinweis{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--lila);color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
+.entwurfshinweis a{color:var(--gelb)}
+@media(max-width:1000px){.raeume{grid-template-columns:1fr}.raum.mitte{order:-1}.zg-raster{grid-template-columns:1fr 1fr}.leiste nav{display:none}.mitglied{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="leiste">
+  <a href="#"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
+  <nav aria-label="Hauptnavigation"><a href="#">Community</a><a href="#">Wissenschaft &amp; Praxis</a><a href="#">Veranstaltungen</a><a href="#"><em>Blick</em>winkel</a><a href="#">Die dghd</a><a href="#">Service</a></nav>
+  <a class="knopf" href="#">Mitglied werden</a>
+</header>
+
+<section class="frage">
+  <h1>Wo Forschung und Anwendung <span class="marker">sich überlagern</span>, arbeitet die dghd.</h1>
+  <p>Die Fachgesellschaft für alle, die Lehre an Hochschulen erforschen, gestalten und begleiten. Wonach suchen Sie?</p>
+  <div class="suchfeld"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E1F52" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Stelle, Veranstaltung, Arbeitsgruppe, Thema …</span><a class="knopf" href="#">Suchen</a></div>
+  <div class="vorschlaege"><a href="#">Stellenbörse</a><a href="#">Fachtagung 2027</a><a href="#">KI in der Lehre</a><a href="#">Akkreditierung</a><a href="#">Didaktik-Landkarte</a></div>
+</section>
+
+<section class="raeume" id="raeume" aria-label="Forschung, dghd, Anwendung">
+  <div class="raum forschung" data-raum="forschung">
+    <div class="ecke" aria-hidden="true"></div>
+    <h2>Forschung</h2>
+    <div class="unterzeile">Hochschuldidaktik als Wissenschaft</div>
+    <a class="eintrag" href="#"><small>Kommission</small><h3>Forschungskommission</h3><p>Hochschuldidaktische Forschung stärken und vernetzen.</p></a>
+    <a class="eintrag" href="#"><small>Buchreihe</small><h3>Blickpunkt Hochschuldidaktik</h3><p>Die Publikationsreihe der dghd.</p></a>
+    <a class="eintrag" href="#"><small>Themen-Dossier</small><h3>Hochschuldidaktik als Wissenschaft</h3><p>Beiträge und Termine der Themenreihe.</p></a>
+    <a class="eintrag" href="#"><small>Nachwuchs</small><h3>Promovierenden-Netzwerk und Nachwuchspreis</h3><p>Für alle, die in der Hochschuldidaktik promovieren.</p></a>
+    <a class="eintrag" href="#"><small>Calls</small><h3>Konferenzen und Publikationsmöglichkeiten</h3><p>Wo sich Forschung aus dem Feld zeigen lässt.</p></a>
+  </div>
+
+  <div class="raum mitte">
+    <h2>Die dghd</h2>
+    <div class="unterzeile">Der gemeinsame Raum: Tagung, Community, Aktuelles</div>
+    <div class="wechsel" role="group" aria-label="Schwerpunkt hervorheben"><button data-fokus="">Alles</button><button data-fokus="forschung">Forschung</button><button data-fokus="anwendung">Anwendung</button></div>
+    <div class="tagung">
+      <div class="randkarte" style="background:var(--rot);right:-60px;top:-60px;transform:rotate(-2.5deg)"></div>
+      <div class="randkarte" style="background:var(--gelb);right:-30px;top:60px;transform:rotate(5deg)"></div>
+      <span class="schlagwort" style="position:relative">Fachtagung 2027 · Österreich</span>
+      <div class="datum" style="margin-top:14px">09.–11.02.</div>
+      <h3>Zwischen Anspruch und Wirklichkeit</h3>
+      <p>Hochschuldidaktische Perspektiven auf Gegenwart und Zukunft akademischer Bildung.</p>
+      <a class="knopf gelb" href="#" style="position:relative">Zum Call for Papers</a>
+    </div>
+    <a class="zeile" href="#"><b>2026</b><span><strong>Themenreihe Gesellschaftliche Bildung</strong><br>Demokratie, Zivilcourage, Nachhaltigkeit und KI-Ethik</span></a>
+    <a class="zeile" href="#"><b>neu</b><span><strong>Forum Weiterbildung</strong><br>Austausch als Community of Practice</span></a>
+    <a class="zeile" href="#"><b>15</b><span><strong>Arbeitsgruppen</strong><br>von Digitalen Medien bis Schreibdidaktik</span></a>
+    <a class="zeile" href="#"><b>7</b><span><strong>Netzwerke</strong><br>vom Promovierenden-Netzwerk bis zu den Fachhochschulen</span></a>
+  </div>
+
+  <div class="raum anwendung" data-raum="anwendung">
+    <div class="ecke" aria-hidden="true"></div>
+    <h2>Anwendung</h2>
+    <div class="unterzeile">Hochschuldidaktik in der Praxis</div>
+    <a class="eintrag" href="#"><small>Service</small><h3>Stellenbörse</h3><p>Ausschreibungen aus Hochschuldidaktik und Lehrentwicklung.</p></a>
+    <a class="eintrag" href="#"><small>Qualität</small><h3>Standards für die Praxis</h3><p>Was gute hochschuldidaktische Arbeit ausmacht.</p></a>
+    <a class="eintrag" href="#"><small>Kommission</small><h3>AKKO</h3><p>Hochschuldidaktische Angebote akkreditieren lassen.</p></a>
+    <a class="eintrag" href="#"><small>Kommission</small><h3>Weiterbildungskommission</h3><p>Weiterbildung im Feld, Forum Weiterbildung.</p></a>
+    <a class="eintrag" href="#"><small>Verzeichnis</small><h3>Didaktik-Landkarte</h3><p>126 Einrichtungen im deutschsprachigen Raum.</p></a>
+  </div>
+</section>
+
+<section class="zielgruppen">
+  <h2>Ihr Weg durch die Seite</h2>
+  <div class="zg-raster">
+    <a href="#"><div class="balken"><i style="width:35%;background:var(--rot)"></i><i style="width:65%;background:var(--gelb)"></i></div><h3>Ich lehre an einer Hochschule</h3><p>Impulse, Standards und Veranstaltungen für die eigene Lehre.</p><div class="legende">mehr Anwendung als Forschung</div></a>
+    <a href="#"><div class="balken"><i style="width:80%;background:var(--rot)"></i><i style="width:20%;background:var(--gelb)"></i></div><h3>Ich forsche zur Hochschuldidaktik</h3><p>Forschungskommission, Publikationen, Nachwuchs und Calls.</p><div class="legende">vor allem Forschung</div></a>
+    <a href="#"><div class="balken"><i style="width:50%;background:var(--rot)"></i><i style="width:50%;background:var(--gelb)"></i></div><h3>Ich arbeite in der Hochschuldidaktik</h3><p>Weiterbildung, Akkreditierung, Netzwerke und Stellen.</p><div class="legende">genau im dritten Raum</div></a>
+    <a href="#"><div class="balken"><i style="width:40%;background:var(--rot)"></i><i style="width:60%;background:var(--gelb)"></i></div><h3>Ich leite eine HD-Einrichtung</h3><p>Qualität, Akkreditierung und Austausch mit anderen Zentren.</p><div class="legende">Strategie und Praxis</div></a>
+  </div>
+</section>
+
+<section class="mitglied">
+  <img src="assets/dghd-bildmarke.svg" alt="">
+  <div><h2>Machen Sie den dritten Raum größer.</h2><p style="margin:0;color:#4a4460">Als Mitglied bringen Sie Forschung und Praxis zusammen: in Arbeitsgruppen, Netzwerken und auf der Fachtagung.</p></div>
+  <a class="knopf" href="#">Mitglied werden</a>
+</section>
+
+<footer><div class="in">
+  <div><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">Barrierefreiheit</a><a href="#">Kontakt</a></div>
+  <div><a href="#">Mastodon</a><a href="#">LinkedIn</a><a href="#">YouTube</a><a href="design-manual.html" style="color:var(--gelb)">Gestaltungsgrundlagen</a></div>
+</div></footer>
+
+<div class="entwurfshinweis">Entwurf 3 · Dritter Raum · <a href="index.html">Übersicht</a> · <a href="design-manual.html">Gestaltungsgrundlagen</a></div>
+
+<script>
+var r=document.getElementById('raeume');
+document.querySelectorAll('.wechsel button').forEach(function(b){b.addEventListener('click',function(){r.classList.remove('fokus-forschung','fokus-anwendung');if(b.dataset.fokus)r.classList.add('fokus-'+b.dataset.fokus);document.querySelectorAll('.wechsel button').forEach(function(x){x.classList.toggle('an',x===b)})})});
+document.querySelector('.wechsel button').classList.add('an');
+</script>
+</body>
+</html>
