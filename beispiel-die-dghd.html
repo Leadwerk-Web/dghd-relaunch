@@ -45,12 +45,14 @@
 .modkarte h3{font-size:22px;margin:12px 0 6px}
 .randnotiz{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--lila);color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;max-width:360px}
 .randnotiz a{color:var(--gelb)}
-@media(max-width:860px){.leiste nav{display:none}.zeichen{transform:scale(.6)}.spalten{grid-template-columns:1fr}}
+@media(max-width:1000px){.leiste{flex-wrap:wrap;gap:12px;padding:12px 20px}.leiste nav{display:none;flex-basis:100%;flex-direction:column;gap:2px}.leiste.offen nav{display:flex}.leiste nav a{padding:10px 6px;border-bottom:1px solid var(--linie)}}
+@media(max-width:860px){.zeichen{width:min(92vw,340px);height:420px}.karte{width:120px;height:120px;top:20px;border-radius:22px}.karte.gelb{left:calc(50% - 90px)}.karte.rot{left:calc(50% - 30px)}.mitte{left:calc(50% - 30px);top:20px;width:52px;height:120px;border-radius:0 18px 18px 0}.wort{top:170px;width:calc(50% - 8px)}.wort.links{right:auto;left:0;text-align:left}.wort.links .strich{margin-left:0}.wort.rechts{left:auto;right:0}.wort h3{font-size:22px}.wort p{font-size:14px}.logozeile img{width:min(88vw,420px)}.logozeile p{font-size:15px;padding:0 20px}.spalten{grid-template-columns:1fr}.breite{padding:0 20px}.randnotiz{max-width:calc(100vw - 32px);font-size:12px}}
 </style>
 </head>
 <body>
 <header class="leiste">
   <a href="index.html"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
+  <button class="menueknopf" type="button" aria-expanded="false" onclick="var k=this.closest('.leiste');k.classList.toggle('offen');this.setAttribute('aria-expanded',k.classList.contains('offen'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</button>
   <nav><a href="#">Community</a><a href="#">Wissenschaft &amp; Praxis</a><a href="#">Veranstaltungen</a><a href="#"><em>Blick</em>winkel</a><a class="aktiv" href="#">Die dghd</a><a href="#">Service</a></nav>
 </header>
 
@@ -95,8 +97,8 @@
     // 0 bis .2 Logo, .2 bis .45 Karten gehen auseinander, .45 bis .7 Begriffe, .7 bis 1 Karten treffen sich, Logo
     var auf=ease(clamp((p-.12)/.25)), zu=ease(clamp((p-.68)/.22));
     var d=auf*(1-zu);
-    kg.style.transform='translateX('+(-110*d)+'px) rotate('+(5-2*d)+'deg)';
-    kr.style.transform='translateX('+(110*d)+'px) rotate('+(-2.5+1*d)+'deg)';
+    var sh=window.innerWidth<=860?70:110;kg.style.transform='translateX('+(-sh*d)+'px) rotate('+(5-2*d)+'deg)';
+    kr.style.transform='translateX('+(sh*d)+'px) rotate('+(-2.5+1*d)+'deg)';
     km.style.opacity=(1-d)*(p<.12?1:clamp(1-auf*2)+zu);
     var w=clamp((p-.38)/.1)*(1-clamp((p-.64)/.08));
     wa.style.opacity=w; wf.style.opacity=w;

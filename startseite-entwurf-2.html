@@ -88,7 +88,8 @@ footer a{color:#fff;text-decoration:none;display:block;padding:3px 0;font-size:1
 footer a:hover{color:var(--gelb)}
 footer .unten{border-top:1px solid rgba(255,255,255,.18);margin-top:40px;padding-top:18px;display:flex;justify-content:space-between;font-size:13.5px;flex-wrap:wrap;gap:12px}
 .entwurfshinweis{position:fixed;right:16px;bottom:16px;z-index:50;background:#fff;color:var(--lila);border-radius:12px;padding:10px 14px;font-size:13px;box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
-@media(max-width:980px){.menue>a,.menue>div{display:none}.buehne,.mag-raster,.doppel,.mitgliedband .breite{grid-template-columns:1fr}.grossekarten{opacity:.35}.reiter-inhalt,.zahlen .breite{grid-template-columns:1fr 1fr}footer .spalten{grid-template-columns:1fr 1fr}}
+@media(max-width:980px){.kopf{flex-wrap:wrap;gap:14px}.kopf img{height:44px}.menue{margin-left:0;flex:1;justify-content:flex-end}.menue>a,.menue>div,.menue .suche{display:none}.kopf.offen .menue{flex-basis:100%;flex-direction:column;align-items:stretch;gap:2px;background:#fff;border-radius:16px;padding:10px}.kopf.offen .menue>a,.kopf.offen .menue>div{display:block}.kopf.offen .menue>a,.kopf.offen .menue>div>a{color:var(--tinte)}.kopf.offen .menue .login{border-color:var(--linie);margin:6px 0 0}.kopf.offen .klapp{position:static;display:block;box-shadow:none;padding:0 0 6px 14px;min-width:0}.kopf.offen .klapp a{font-size:15px;padding:6px 10px}.menueknopf{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}.buehne,.mag-raster,.doppel,.mitgliedband .breite{grid-template-columns:1fr}.buehne{padding:36px 0 56px}.buehne h1{font-size:clamp(40px,11vw,60px)}.grossekarten{right:-260px;top:-40px;opacity:.5}.tagungskarte{margin:10px 0 0;max-width:none}.reiter-inhalt,.zahlen .breite{grid-template-columns:1fr 1fr}footer .spalten{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.reiter-inhalt,.zahlen .breite,footer .spalten{grid-template-columns:1fr}.breite{padding:0 20px}.zahlen b{font-size:44px}.h2gross{font-size:32px}.aufmacher .bild span{font-size:22px}}
 </style>
 </head>
 <body>
@@ -106,8 +107,9 @@ footer .unten{border-top:1px solid rgba(255,255,255,.18);margin-top:40px;padding
         <div><a href="#"><em>Blick</em>winkel</a></div>
         <div><a href="#">Die dghd</a></div>
         <a class="login" href="#">Login</a>
-        <span class="suche" aria-label="Suche"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span>
+        <span class="suche" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span>
       </nav>
+      <button class="menueknopf" type="button" aria-expanded="false" onclick="var k=this.closest('.kopf');k.classList.toggle('offen');this.setAttribute('aria-expanded',k.classList.contains('offen'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</button>
     </header>
     <section class="buehne">
       <div>

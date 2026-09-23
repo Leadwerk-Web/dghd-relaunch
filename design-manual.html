@@ -14,6 +14,7 @@
 .kopf nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14.5px}
 .kopf nav a{color:var(--tinte);text-decoration:none}
 .kopf nav a:hover{color:var(--rot)}
+@media(max-width:860px){.kopf .in{gap:14px;padding:10px 16px}.kopf img{height:34px}.kopf nav{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;padding-bottom:4px;scrollbar-width:thin}}
 main{max-width:1180px;margin:0 auto;padding:0 24px 80px}
 section{padding:72px 0 8px;border-bottom:1px solid var(--linie)}
 .nr{font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rot);margin-bottom:14px}
@@ -67,6 +68,24 @@ th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;col
   radial-gradient(circle at 30% 35%,rgba(255,255,255,.25) 0 60px,transparent 61px),
   linear-gradient(135deg,#5b4a7e,#2E1F52);display:flex;align-items:flex-end;padding:18px;color:#fff;font-size:13px}
 .hinweis{font-size:13px;color:var(--grau);margin-top:8px}
+.navdemo{background:#fff;border:1px solid var(--linie);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:230px 1fr;min-height:300px}
+.navdemo .sb{border-right:1px solid var(--linie);padding:18px 16px;background:#fff}
+.navdemo .sb img{height:34px;margin-bottom:16px}
+.navdemo .sb ul{list-style:none;margin:0;padding:0}
+.navdemo .sb li{padding:9px 8px;border-radius:8px;font-size:15px;display:flex;justify-content:space-between;color:var(--tinte)}
+.navdemo .sb li.an{background:var(--karton);color:var(--rot)}
+.navdemo .sb li span{color:var(--grau)}
+.navdemo .sb .unter{padding:2px 0 6px 12px;margin:0 0 0 8px;border-left:2px solid var(--gelb)}
+.navdemo .sb .unter li{padding:5px 8px;font-size:14px}
+.navdemo .fach{padding:22px 24px}
+.navdemo .fach h5{font-family:var(--serif);font-size:20px;margin:0 0 10px}
+.navdemo .fach .liste{display:grid;grid-template-columns:1fr 1fr;gap:4px 22px}
+.navdemo .fach .liste a{padding:7px 0;border-bottom:1px solid var(--linie);font-size:15px;color:var(--tinte);text-decoration:none}
+.navdemo .fach .regel{font-size:13px;color:var(--grau);margin-top:14px}
+@media(max-width:700px){.navdemo{grid-template-columns:1fr}.navdemo .sb{border-right:0;border-bottom:1px solid var(--linie)}.navdemo .fach .liste{grid-template-columns:1fr}}
+.logoreihe{display:flex;flex-wrap:wrap;gap:12px}
+.logoreihe span{flex:1 1 140px;height:64px;border:1px solid var(--linie);border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font:600 13px var(--sans);color:#8a8598;letter-spacing:.06em}
+.logoreihe span.farbe{color:var(--rot);border-color:var(--rot)}
 .fuss{max-width:1180px;margin:0 auto;padding:36px 24px 60px;font-size:14px;color:var(--grau);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </style>
 </head>
@@ -75,7 +94,7 @@ th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;col
 <header class="kopf"><div class="in">
   <a href="index.html"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
   <nav>
-    <a href="#idee">Idee</a><a href="#wandel">Von heute zu morgen</a><a href="#logo">Logo</a><a href="#farben">Farben</a><a href="#schrift">Schrift</a><a href="#elemente">Gestaltungselemente</a><a href="#bilder">Bilder</a><a href="#icons">Piktogramme</a><a href="#bewegung">Bewegung</a><a href="#zugang">Barrierefreiheit</a>
+    <a href="#idee">Idee</a><a href="#wandel">Von heute zu morgen</a><a href="#logo">Logo</a><a href="#farben">Farben</a><a href="#schrift">Schrift</a><a href="#navigation">Navigation</a><a href="#elemente">Gestaltungselemente</a><a href="#bilder">Bilder</a><a href="#icons">Piktogramme</a><a href="#bewegung">Bewegung</a><a href="#zugang">Barrierefreiheit</a>
   </nav>
 </div></header>
 
@@ -259,8 +278,65 @@ th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;col
 </section>
 
 <!-- 6 -->
+<section id="navigation">
+  <div class="nr">06 · Navigation</div>
+  <h2>Ein Menü, das zwei Wege kennt</h2>
+  <div class="spalten">
+    <div>
+      <p class="lead">Die dghd möchte ihr Menü entlang der Zielgruppen aufbauen und hat als Vorbild die Seitenleiste der New York University genannt. Beides ist in der Navigation angelegt: eine ruhige Seitenleiste nach Themen und darüber die Einstiege nach Zielgruppe.</p>
+      <h3>Die Regel aus dem Menü-Prototyp</h3>
+      <p>Hat ein Menüpunkt bis zu drei Unterpunkte, klappen sie direkt darunter auf. Hat er vier oder mehr, öffnet sich eine Ebene als Fächer zur Seite. So bleiben kurze Bereiche kompakt und lange Bereiche übersichtlich. Die Regel stammt aus dem Prototyp der Geschäftsstelle und wird so übernommen.</p>
+      <h3>Zielgruppen als zweiter Weg</h3>
+      <p>Die vier Zielgruppen aus der Zielgruppenbeschreibung bekommen eigene Einstiege auf der Startseite: Lehrende, HD Forschende, HD Professionals und Management von HD-Einrichtungen. Jeder Einstieg führt auf eine Übersicht, die über das Schlagwort „Zielgruppe“ gefiltert wird. Die Zuordnung der Organe zu den Zielgruppen ergänzt die Geschäftsstelle.</p>
+      <h3>Auf dem Smartphone</h3>
+      <p>Die Seitenleiste wird zur Kopfzeile mit Logo und Menüknopf. Das Menü öffnet sich darunter, alle Ebenen untereinander, Schrift nicht kleiner als 16 Pixel. Das Wort <em>Blick</em>winkel bleibt auch dort kursiv ausgezeichnet.</p>
+    </div>
+    <div>
+      <div class="navdemo" aria-label="Beispiel der Seitennavigation">
+        <div class="sb">
+          <img src="assets/dghd-logo-zuschnitt.svg" alt="">
+          <ul>
+            <li class="an">Community <span>›</span></li>
+            <li>Wissenschaft &amp; Praxis <span>›</span></li>
+            <li style="display:block"><div style="display:flex;justify-content:space-between">Veranstaltungen <span>⌄</span></div><ul class="unter"><li>Veranstaltungskalender</li><li>dghd-Jahrestagung</li><li>Veranstaltung einreichen</li></ul></li>
+            <li>Aktuelles &amp; <em>Blick</em>winkel <span>›</span></li>
+            <li>Die dghd <span>›</span></li>
+            <li>Service <span>›</span></li>
+          </ul>
+        </div>
+        <div class="fach">
+          <h5>Community</h5>
+          <div class="liste"><a>Community im Überblick</a><a>Arbeitsgruppen</a><a>Netzwerke</a><a>Kommissionen</a><a>Nachwuchs</a><a>Kooperationen</a><a>Mitgliedschaft</a><a>Meine dghd</a></div>
+          <div class="regel">Acht Unterpunkte, deshalb öffnet sich der Bereich als Fächer. „Veranstaltungen“ hat drei und klappt nach unten.</div>
+        </div>
+      </div>
+      <p class="klein" style="margin-top:10px">Die Seitenleiste ist in Entwurf 1 umgesetzt, die Entwürfe 2 und 3 zeigen dieselbe Struktur als Kopfzeile mit Aufklappmenü.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:36px">Was sonst noch festliegt</h3>
+  <div class="drei">
+    <div class="feld">
+      <h4 style="font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin:0 0 12px">Schlagworte</h4>
+      <p style="font-size:16px;margin:0 0 12px">Jeder Beitrag trägt nach dem Kategorien- und Schlagwortsystem der dghd eine Hauptkategorie und Schlagworte zu Thema, Format, Zielgruppe und Herkunft. Die Farbe zeigt die Dimension:</p>
+      <p style="margin:0;display:flex;flex-wrap:wrap;gap:8px"><span class="schlagwort">Hauptkategorie</span><span class="schlagwort rot">Format</span><span class="schlagwort lila">Herkunft, Organ</span></p>
+      <p class="klein" style="margin:12px 0 0">Thema und Zielgruppe erscheinen als Filter, nicht als Farbfläche, sonst wird es bunt.</p>
+    </div>
+    <div class="feld">
+      <h4 style="font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin:0 0 12px">Partner und Kooperationen</h4>
+      <p style="font-size:16px;margin:0 0 12px">Ein eigener Block, getrennt nach fachlichen und technischen Partnern. Logos einfarbig in Grau, beim Überfahren in ihrer Originalfarbe. So lässt sich auch ein Hosting-Partner sichtbar nennen, ohne dass die Seite nach Werbung aussieht.</p>
+      <div class="logoreihe"><span>Partner A</span><span class="farbe">Partner B</span><span>Partner C</span></div>
+    </div>
+    <div class="feld">
+      <h4 style="font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin:0 0 12px">Fediverse und Kanäle</h4>
+      <p style="font-size:16px;margin:0">Die dghd ist auf Mastodon, LinkedIn und YouTube. Diese drei stehen im Fußbereich und auf der Kontaktseite, mit eigenen Piktogrammen in der Linie der Seite. Kein Kanal, den die dghd nicht mehr bespielt. Beiträge sollen später auch über das Fediverse erreichbar sein, dafür bleibt im Beitragskopf Platz für eine Adresse.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
 <section id="elemente">
-  <div class="nr">06 · Gestaltungselemente aus der Bildmarke</div>
+  <div class="nr">07 · Gestaltungselemente aus der Bildmarke</div>
   <h2>Die Karten werden zum Baustein</h2>
   <p class="lead">Aus der Bildmarke leiten sich fünf Elemente ab. Sie tauchen auf jeder Seite auf und machen die Website wiedererkennbar, ohne dass überall das Logo stehen muss.</p>
 
@@ -335,7 +411,7 @@ th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;col
 
 <!-- 7 -->
 <section id="bilder">
-  <div class="nr">07 · Bilder</div>
+  <div class="nr">08 · Bilder</div>
   <h2>Echte Momente statt Hörsaal-Klischee</h2>
   <div class="spalten">
     <div>
@@ -366,7 +442,7 @@ th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;col
 
 <!-- 8 -->
 <section id="icons">
-  <div class="nr">08 · Piktogramme</div>
+  <div class="nr">09 · Piktogramme</div>
   <h2>Eigene Zeichen statt Symbolbibliothek</h2>
   <p class="lead">Die Standardsymbole der heutigen Seite sollen nicht mehr verwendet werden. Stattdessen eine kleine Reihe eigener Piktogramme: feine Linie, gerundete Ecken, die Kartenform als Grundgestalt.</p>
   <div class="icon-reihe" style="margin-top:22px">
@@ -382,7 +458,7 @@ th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;col
 
 <!-- 9 -->
 <section id="bewegung">
-  <div class="nr">09 · Bewegung</div>
+  <div class="nr">10 · Bewegung</div>
   <h2>Die Bildmarke erklärt sich selbst</h2>
   <div class="spalten">
     <div>
@@ -403,7 +479,7 @@ th{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;col
 
 <!-- 10 -->
 <section id="zugang" style="border-bottom:0">
-  <div class="nr">10 · Barrierefreiheit</div>
+  <div class="nr">11 · Barrierefreiheit</div>
   <h2>Für alle lesbar</h2>
   <div class="vier">
     <div class="feld"><h3 style="margin-top:0;font-size:19px">Kontrast</h3><p style="margin:0;font-size:16px">Alle Textfarben erfüllen mindestens WCAG 2.2 AA. Gelb nie als Schrift auf Hell.</p></div>

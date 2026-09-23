@@ -25,7 +25,7 @@ body{background:#fff}
 .vorschlaege a{font-size:14.5px;background:#fff;border:1.5px solid var(--linie);border-radius:999px;padding:7px 13px;color:var(--tinte);text-decoration:none}
 /* Die drei Räume */
 .raeume{display:grid;grid-template-columns:1fr 1.15fr 1fr;min-height:760px;position:relative;overflow:hidden}
-.raum{padding:88px 34px 56px;position:relative;transition:opacity .25s,filter .25s}
+.raum{padding:88px 34px 56px;position:relative;min-width:0;transition:opacity .25s,filter .25s}
 .raum.forschung{background:linear-gradient(180deg,#F7E5E8,#F3D9DE)}
 .raum.anwendung{background:linear-gradient(180deg,#FBF1CF,#F7E7AE)}
 .raum.mitte{background:var(--dritter-raum);box-shadow:0 0 0 1px #efe9a8;z-index:2}
@@ -40,7 +40,7 @@ body{background:#fff}
 .anwendung .ecke{right:0;background:var(--gelb);border-radius:0 0 0 26px;transform-origin:100% 0;transform:rotate(5deg) translate(20px,-24px)}
 .eintrag{display:block;background:#fff;border-radius:14px;padding:18px 18px 16px;margin-bottom:14px;text-decoration:none;color:var(--tinte);box-shadow:0 10px 20px -18px rgba(46,31,82,.6);transition:transform .2s}
 .eintrag:hover{transform:translateX(4px)}
-.eintrag small{display:block;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin-bottom:4px}
+.eintrag small{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin-bottom:4px}
 .eintrag h3{font-size:20px;margin:0 0 4px}
 .eintrag p{font-size:15px;margin:0;color:#4a4460}
 .forschung .eintrag{border-left:5px solid var(--rot)}
@@ -54,7 +54,7 @@ body{background:#fff}
 .mitte .zeile{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(46,31,82,.15);text-decoration:none;color:var(--tinte)}
 .mitte .zeile b{font-family:var(--serif);font-size:22px;color:var(--rot);min-width:62px;line-height:1.1}
 .mitte .zeile span{font-size:15.5px}
-.wechsel{display:flex;gap:8px;margin-bottom:22px}
+.wechsel{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
 .wechsel button{font:600 14px var(--sans);border:2px solid var(--lila);background:transparent;color:var(--lila);border-radius:999px;padding:8px 12px;cursor:pointer}
 .wechsel button.an{background:var(--lila);color:#fff}
 /* Zielgruppen */
@@ -68,18 +68,20 @@ body{background:#fff}
 .zg-raster .balken i{display:block;height:100%}
 .zg-raster h3{font-size:22px;margin:0 0 8px}
 .zg-raster p{font-size:15.5px;margin:0;color:#4a4460}
-.zg-raster .legende{font-size:12.5px;color:var(--grau);margin-top:12px}
+.zg-raster .legende{font-size:13px;color:var(--grau);margin-top:12px}
 /* Mitglied und Fuß */
 .mitglied{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;max-width:1240px;margin:0 auto 64px;padding:0 36px}
 .mitglied img{width:120px}
 .mitglied h2{font-size:clamp(28px,3vw,40px);margin:0 0 6px}
 footer{background:var(--lila);color:#d9d3e6;padding:44px 36px 26px}
 footer .in{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-footer a{color:#fff;text-decoration:none;margin-right:18px;font-size:15.5px}
+footer a{color:#fff;text-decoration:none;margin-right:18px;font-size:15.5px;display:inline-block;padding:4px 0}
+footer .in>div{min-width:0;flex:1 1 280px}
 footer a:hover{color:var(--gelb)}
 .entwurfshinweis{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--lila);color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
 .entwurfshinweis a{color:var(--gelb)}
-@media(max-width:1000px){.raeume{grid-template-columns:1fr}.raum.mitte{order:-1}.zg-raster{grid-template-columns:1fr 1fr}.leiste nav{display:none}.mitglied{grid-template-columns:1fr}}
+@media(max-width:1000px){.raeume{grid-template-columns:1fr}.raum{padding:60px 24px 40px}.raum.mitte{order:-1}.zg-raster{grid-template-columns:1fr 1fr}.leiste{flex-wrap:wrap;gap:12px;padding:12px 20px}.leiste nav{display:none;flex-basis:100%;flex-direction:column;gap:2px;background:#fff}.leiste.offen nav{display:flex}.leiste nav a{padding:10px 6px;border-bottom:1px solid var(--linie)}.leiste .knopf{padding:10px 14px;font-size:14px}.menueknopf{margin-left:0}.mitglied{grid-template-columns:1fr;text-align:center;justify-items:center}}
+@media(max-width:600px){.zg-raster{grid-template-columns:1fr}.zg-raster a{border-right:0;border-bottom:1px solid var(--linie)}.frage{padding:40px 20px 32px}.suchfeld{flex-wrap:wrap;border-radius:26px;padding:12px}.suchfeld .knopf{width:100%;justify-content:center}.zielgruppen{padding:44px 20px}.mitglied{padding:0 20px}}
 </style>
 </head>
 <body>
@@ -88,6 +90,7 @@ footer a:hover{color:var(--gelb)}
   <a href="#"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
   <nav aria-label="Hauptnavigation"><a href="#">Community</a><a href="#">Wissenschaft &amp; Praxis</a><a href="#">Veranstaltungen</a><a href="#"><em>Blick</em>winkel</a><a href="#">Die dghd</a><a href="#">Service</a></nav>
   <a class="knopf" href="#">Mitglied werden</a>
+  <button class="menueknopf" type="button" aria-expanded="false" onclick="var k=this.closest('.leiste');k.classList.toggle('offen');this.setAttribute('aria-expanded',k.classList.contains('offen'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</button>
 </header>
 
 <section class="frage">

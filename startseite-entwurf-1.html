@@ -98,13 +98,15 @@ footer .unten{position:relative;border-top:1px solid rgba(255,255,255,.18);margi
 .entwurfshinweis{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--lila);color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
 .entwurfshinweis a{color:var(--gelb)}
 @media(max-width:1100px){.zielgruppen{grid-template-columns:1fr 1fr}.raster3{grid-template-columns:1fr 1fr}}
-@media(max-width:860px){body{grid-template-columns:1fr}.seitenleiste{position:relative;height:auto}.faecher{display:none!important}.einstieg,.zwei,.community,.mitglied{grid-template-columns:1fr}.zielgruppen,.raster3{grid-template-columns:1fr}footer .spalten{grid-template-columns:1fr 1fr}}
+@media(max-width:980px){body{grid-template-columns:1fr}.seitenleiste{position:sticky;top:0;height:auto;padding:12px 18px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}.seitenleiste .logo img{max-width:170px}.seitenleiste .suche,.seitenleiste .hauptnav,.seitenleiste .leiste-unten{display:none;grid-column:1/-1}.seitenleiste.offen .suche,.seitenleiste.offen .leiste-unten{display:flex;flex-direction:column}.seitenleiste.offen .hauptnav{display:block}.seitenleiste .leiste-unten{margin-top:8px}.faecher{position:static;width:auto;display:none;grid-template-columns:1fr;box-shadow:none;border:0;border-left:2px solid var(--gelb);border-radius:0;margin-left:10px;padding:4px 0 8px 14px}.hauptnav>li.faecher-offen .faecher{display:grid}.faecher h5,.faecher .regel{display:none}.einstieg,.zwei,.community,.mitglied{grid-template-columns:1fr}.zielgruppen,.raster3{grid-template-columns:1fr}.zg{transform:none!important}footer .spalten{grid-template-columns:1fr 1fr}.einstieg{padding-top:36px}}
+@media(max-width:520px){footer .spalten{grid-template-columns:1fr}.bereich{padding:44px 20px}.mitglied{margin:0 20px 44px;padding:28px}}
 </style>
 </head>
 <body>
 
 <aside class="seitenleiste" aria-label="Hauptnavigation">
   <a class="logo" href="#"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
+  <button class="menueknopf" type="button" aria-expanded="false" onclick="var k=this.closest('.seitenleiste');k.classList.toggle('offen');this.setAttribute('aria-expanded',k.classList.contains('offen'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</button>
   <div class="suche"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Suchen auf dghd.de</div>
   <ul class="hauptnav">
     <li><a href="#">Community <span>›</span></a>
@@ -236,7 +238,7 @@ footer .unten{position:relative;border-top:1px solid rgba(255,255,255,.18);margi
 
 <script>
 (function(){var t=new Date(2027,1,9),h=new Date();h.setHours(0,0,0,0);var d=Math.round((t-h)/864e5);var e=document.getElementById('countdown');if(e&&d>0)e.textContent='noch '+d+' Tage bis zur Tagung';})();
-document.querySelectorAll('.hauptnav>li').forEach(function(li){li.addEventListener('mouseenter',function(){if(li.querySelector('.faecher')){document.querySelectorAll('.hauptnav>li').forEach(function(x){x.classList.remove('faecher-offen')});li.classList.add('faecher-offen')}})});
+document.querySelectorAll('.hauptnav>li').forEach(function(li){li.addEventListener('click',function(e){if(li.querySelector('.faecher')&&window.innerWidth<=980){e.preventDefault();li.classList.toggle('faecher-offen')}});li.addEventListener('mouseenter',function(){if(li.querySelector('.faecher')){document.querySelectorAll('.hauptnav>li').forEach(function(x){x.classList.remove('faecher-offen')});li.classList.add('faecher-offen')}})});
 document.querySelector('main').addEventListener('mouseenter',function(){document.querySelectorAll('.hauptnav>li').forEach(function(x){x.classList.remove('faecher-offen')})});
 </script>
 </body>
