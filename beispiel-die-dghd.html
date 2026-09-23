@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dghd · Beispiel Seite „Die dghd“ mit Logo-Erklärung</title>
+<link rel="icon" href="assets/dghd-bildmarke.svg">
+<link rel="stylesheet" href="assets/dghd.css">
+<style>
+.leiste{display:flex;align-items:center;gap:24px;padding:18px 36px;border-bottom:1px solid var(--linie);background:#fff;position:sticky;top:0;z-index:30}
+.leiste img{height:44px}
+.leiste nav{display:flex;gap:22px;margin-left:auto;font-size:15.5px}
+.leiste nav a{color:var(--tinte);text-decoration:none}
+.leiste nav a.aktiv{color:var(--rot);font-weight:600}
+.breite{max-width:1120px;margin:0 auto;padding:0 32px}
+.pfad{font-size:14px;color:var(--grau);padding:26px 0 0}
+.kopf h1{font-size:clamp(40px,5vw,62px);margin:14px 0 16px}
+.kopf p{font-size:21px;max-width:760px;color:#3a3450;margin:0 0 40px}
+.unternav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.unternav a{border:1.5px solid var(--linie);border-radius:999px;padding:8px 14px;font-size:15px;text-decoration:none;color:var(--tinte);background:#fff}
+.unternav a.an{background:var(--lila);color:#fff;border-color:var(--lila)}
+/* Scroll-Erzählung zur Bildmarke, nach Version 2 der Logo-Erklärung */
+.erzaehlung{height:320vh;position:relative;margin-top:30px;background:var(--papier);border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+.buehne{position:sticky;top:78px;height:calc(100vh - 78px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.zeichen{position:relative;width:560px;height:300px}
+.karte{position:absolute;width:190px;height:190px;border-radius:30px;top:55px;will-change:transform}
+.karte.gelb{background:var(--gelb);left:130px}
+.karte.rot{background:var(--rot);left:240px;z-index:1}
+.mitte{position:absolute;left:240px;top:55px;width:80px;height:190px;border-radius:0 26px 26px 0;background:var(--dritter-raum);z-index:2;opacity:0}
+.wort{position:absolute;top:30px;width:260px;opacity:0;transition:opacity .3s}
+.wort h3{font-size:32px;margin:0 0 6px;color:var(--rot)}
+.wort p{font-size:16px;margin:0;color:#4a4460}
+.wort .strich{display:block;width:70px;height:4px;border-radius:2px;margin:0 0 12px}
+.wort.links{right:calc(100% + 10px);text-align:right}.wort.links .strich{background:var(--gelb);margin-left:auto}
+.wort.rechts{left:calc(100% + 10px)}.wort.rechts .strich{background:var(--rot)}
+.logozeile{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+.logozeile img{width:560px}
+.logozeile p{max-width:640px;text-align:center;font-size:17px;color:#3a3450;margin-top:22px}
+.hinweis-scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font:600 12px var(--sans);letter-spacing:.16em;color:var(--grau)}
+@media (prefers-reduced-motion:reduce){.erzaehlung{height:auto}.buehne{position:relative;height:auto;padding:60px 0}.karte,.mitte,.wort{display:none}.logozeile{position:relative;opacity:1}}
+.inhalt{padding:70px 0}
+.inhalt h2{font-size:clamp(30px,3.4vw,42px)}
+.spalten{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.modkarte h3{font-size:22px;margin:12px 0 6px}
+.randnotiz{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--lila);color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;max-width:360px}
+.randnotiz a{color:var(--gelb)}
+@media(max-width:860px){.leiste nav{display:none}.zeichen{transform:scale(.6)}.spalten{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="leiste">
+  <a href="index.html"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Deutsche Gesellschaft für Hochschuldidaktik"></a>
+  <nav><a href="#">Community</a><a href="#">Wissenschaft &amp; Praxis</a><a href="#">Veranstaltungen</a><a href="#"><em>Blick</em>winkel</a><a class="aktiv" href="#">Die dghd</a><a href="#">Service</a></nav>
+</header>
+
+<div class="breite kopf">
+  <div class="pfad">Startseite › Die dghd › Über die dghd</div>
+  <h1>Über die dghd</h1>
+  <p>Die Deutsche Gesellschaft für Hochschuldidaktik ist die wissenschaftliche Fachgesellschaft für alle, die sich im deutschsprachigen Raum mit Lehre und Studium an Hochschulen befassen.</p>
+  <nav class="unternav"><a class="an" href="#">Profil &amp; Auftrag</a><a href="#">Ziele</a><a href="#">Geschichte</a><a href="#">Vorstand</a><a href="#">Geschäftsstelle</a><a href="#">Satzung</a></nav>
+</div>
+
+<section class="erzaehlung" id="erzaehlung" aria-label="Was unser Zeichen bedeutet">
+  <div class="buehne">
+    <div class="zeichen" id="zeichen">
+      <div class="karte gelb" id="kg"></div>
+      <div class="karte rot" id="kr"></div>
+      <div class="mitte" id="km"></div>
+      <div class="wort links" id="wa"><span class="strich"></span><h3>Anwendung</h3><p>Beratung, Weiterbildung und Programmentwicklung an den Hochschulen. Hier zeigt sich, was im Alltag der Lehre trägt.</p></div>
+      <div class="wort rechts" id="wf"><span class="strich"></span><h3>Forschung</h3><p>Empirische und konzeptionelle Arbeit an Lehre, Lernen und Studium. Hier entstehen die Begriffe, mit denen das Feld über sich nachdenkt.</p></div>
+    </div>
+    <div class="logozeile" id="logo"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd Logo"><p>In der dghd gehören beide Seiten zusammen. Dass sich die Karten im Zeichen überlagern, ist kein Zufall: Die Hochschuldidaktik kommt ohne das eine oder das andere nicht aus. Erst wo beide übereinanderliegen, entsteht das Helle in der Mitte.</p></div>
+    <div class="hinweis-scroll" id="scrollhinweis">SCROLLEN ↓</div>
+  </div>
+</section>
+
+<section class="inhalt">
+  <div class="breite">
+    <div class="spalten">
+      <div><h2>Profil &amp; Auftrag</h2><p>Die dghd bietet ein Forum für hochschuldidaktische Forschung und Entwicklung, fördert die hochschuldidaktische Diskussion und nimmt zu wichtigen Fragen von Hochschullehre und Studium Stellung.</p><p>Ihre Mitglieder arbeiten in Arbeitsgruppen, Kommissionen und Netzwerken zusammen, alle zwei Jahre treffen sie sich zur Fachtagung.</p></div>
+      <div class="modkarte"><span class="schlagwort">Fachtagung 2027</span><h3>Zwischen Anspruch und Wirklichkeit</h3><p style="margin:0">09. bis 11. Februar 2027, erstmals in Österreich.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="randnotiz">Beispiel: Die Logo-Erklärung läuft auf „Die dghd“ als Scroll-Erzählung, einmal, direkt unter dem Seitenkopf. Bei reduzierter Bewegung erscheint nur das Logo mit Text. · <a href="index.html">Übersicht</a> · <a href="design-manual.html#bewegung">Gestaltungsgrundlagen</a></div>
+
+<script>
+(function(){
+  var s=document.getElementById('erzaehlung'),kg=document.getElementById('kg'),kr=document.getElementById('kr'),km=document.getElementById('km'),wa=document.getElementById('wa'),wf=document.getElementById('wf'),logo=document.getElementById('logo'),z=document.getElementById('zeichen'),h=document.getElementById('scrollhinweis');
+  function clamp(v){return Math.max(0,Math.min(1,v))}
+  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
+  function f(p){
+    // 0 bis .2 Logo, .2 bis .45 Karten gehen auseinander, .45 bis .7 Begriffe, .7 bis 1 Karten treffen sich, Logo
+    var auf=ease(clamp((p-.12)/.25)), zu=ease(clamp((p-.68)/.22));
+    var d=auf*(1-zu);
+    kg.style.transform='translateX('+(-110*d)+'px) rotate('+(5-2*d)+'deg)';
+    kr.style.transform='translateX('+(110*d)+'px) rotate('+(-2.5+1*d)+'deg)';
+    km.style.opacity=(1-d)*(p<.12?1:clamp(1-auf*2)+zu);
+    var w=clamp((p-.38)/.1)*(1-clamp((p-.64)/.08));
+    wa.style.opacity=w; wf.style.opacity=w;
+    var l=Math.max(1-clamp(p/.08), clamp((p-.88)/.07));
+    logo.style.opacity=l; z.style.opacity=Math.min(clamp(p/.08), 1-clamp((p-.86)/.05));
+    h.style.opacity=1-clamp(p/.1);
+  }
+  function upd(){var r=s.getBoundingClientRect(),tot=s.offsetHeight-window.innerHeight;f(clamp(-r.top/tot))}
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){window.addEventListener('scroll',upd,{passive:true});upd();}
+  window.__zeige=f;
+})();
+</script>
+</body>
+</html>
