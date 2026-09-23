@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dghd · Navigation · klickbarer Prototyp</title>
+<link rel="icon" href="assets/dghd-bildmarke.svg">
+<link rel="stylesheet" href="assets/dghd.css">
+<style>
+body{background:#fff}
+:root{--topH:54px}
+.top{display:flex;align-items:center;gap:18px;padding:12px 24px;background:var(--lila);color:#fff;font-size:14.5px;position:sticky;top:0;z-index:50;flex-wrap:wrap}
+@media(min-width:981px){.top{flex-wrap:nowrap}.top .info{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}}
+.top b{font-weight:600}
+.top .um{display:flex;gap:6px;margin-left:auto}
+.top .um button{font:600 14px var(--sans);border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;border-radius:999px;padding:7px 14px;cursor:pointer}
+.top .um button.an{background:var(--gelb);color:var(--lila);border-color:var(--gelb)}
+.top .info{font-size:13.5px;color:#d9d3e6}
+.bau{display:grid;grid-template-columns:288px 1fr;min-height:calc(100vh - var(--topH))}
+/* Seitenleiste */
+.sl{position:sticky;top:var(--topH);height:calc(100vh - var(--topH));background:#fff;border-right:1px solid var(--linie);padding:22px 18px;display:flex;flex-direction:column;z-index:40}
+.sl .logo img{width:100%;max-width:220px;margin-bottom:8px}
+.suche{margin:16px 0 12px;display:flex;align-items:center;gap:8px;border:1.5px solid var(--linie);border-radius:999px;padding:9px 14px;color:var(--grau);font-size:14.5px}
+.zg{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.zg span{font:600 12px var(--sans);color:var(--grau);width:100%}
+.zg button{font:600 12.5px var(--sans);border:1.5px solid var(--linie);background:#fff;color:var(--tinte);border-radius:999px;padding:5px 10px;cursor:pointer}
+.zg button.an{background:var(--lila);color:#fff;border-color:var(--lila)}
+ul.nav,ul.nav ul{list-style:none;margin:0;padding:0}
+#nav li>button,.spalte li>button{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:left;font:500 16px/1.3 var(--sans);color:var(--tinte);background:transparent;border:0;padding:11px 10px;border-radius:10px;cursor:pointer}
+#nav li>button:hover,.spalte li>button:hover{background:var(--karton);color:var(--rot)}
+#nav li.offen>button,.spalte li.offen>button{background:var(--karton);color:var(--rot)}
+#nav li>button i,.spalte li>button i{font-style:normal;color:var(--grau);font-size:15px;flex:none}
+li.gedimmt>button{opacity:.38}
+ul.inline{padding:2px 0 8px 12px;margin:0 0 0 10px;border-left:2px solid var(--gelb)}
+ul.inline li>button{font-size:15px;padding:7px 10px}
+.sl .unten{margin-top:auto;padding-top:14px}
+.sl .unten .knopf{width:100%;justify-content:center}
+/* Fächer-Spalten */
+.faecher{position:fixed;left:288px;top:var(--topH);bottom:0;display:flex;z-index:35;pointer-events:none}
+.spalte{width:300px;background:#fff;border-right:1px solid var(--linie);box-shadow:18px 0 30px -26px rgba(46,31,82,.45);padding:18px 14px 20px;overflow:auto;pointer-events:auto;animation:auf .18s ease-out}
+@keyframes auf{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.spalte ul{list-style:none;margin:0;padding:0}
+.spalte h5{font-family:var(--serif);font-size:19px;margin:6px 8px 12px;color:var(--lila)}
+.spalte .regel{font-size:12.5px;color:var(--grau);margin:12px 8px 0;padding-top:10px;border-top:1px solid var(--linie)}
+/* Inhalt */
+.inhalt{padding:44px clamp(24px,5vw,72px) 80px;position:relative}
+.pfad{font-size:14px;color:var(--grau);margin-bottom:10px}
+.pfad b{color:var(--tinte);font-weight:500}
+.inhalt h1{font-size:clamp(34px,4.2vw,54px);margin-bottom:12px}
+.inhalt .lead{font-size:19px;color:#3a3450;max-width:720px;margin:0 0 22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.organ{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 30px}
+.organ .modkarte h4{font-size:18px;margin:10px 0 6px}
+.organ .modkarte p{font-size:15px;margin:0}
+.text{max-width:720px;color:#3a3450}
+.text .h{height:13px;border-radius:3px;background:#e8e5ee;margin:9px 0}
+.statistik{margin-top:40px;padding:22px 24px;border-radius:16px;background:var(--papier);border:1px solid var(--linie);font-size:15px;max-width:720px}
+.statistik b{display:block;font-family:var(--serif);font-size:22px;margin-bottom:6px;font-weight:600}
+.statistik ul{margin:0;padding-left:18px}
+.schleier{position:fixed;inset:0;z-index:30;display:none}
+.schleier.an{display:block}
+.entwurfshinweis{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--lila);color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
+.entwurfshinweis a{color:var(--gelb)}
+@media(max-width:980px){.bau{grid-template-columns:1fr}.sl{position:sticky;top:var(--topH);height:auto;padding:10px 16px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;border-bottom:1px solid var(--linie)}.sl .logo img{max-width:150px;margin:0}.sl .suche,.sl .zg,.sl .nav,.sl .unten{display:none;grid-column:1/-1}.sl.offen .suche{display:flex}.sl.offen .zg{display:flex}.sl.offen .nav{display:block}.sl.offen .unten{display:block}.faecher{display:none}ul.inline.mobil{display:block}.inhalt{padding:28px 20px 60px}.organ{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <b>Navigation · klickbarer Prototyp</b>
+  <span class="info" id="info"></span>
+  <div class="um"><button id="umNeu" class="an">Neu: Sitemap V2</button><button id="umHeute">Heute: dghd.de</button></div>
+</div>
+
+<div class="bau">
+  <aside class="sl" id="sl">
+    <a class="logo" href="index.html"><img src="assets/dghd-logo-zuschnitt.svg" alt="dghd"></a>
+    <button class="menueknopf" type="button" aria-expanded="false" onclick="var a=document.getElementById('sl');a.classList.toggle('offen');this.setAttribute('aria-expanded',a.classList.contains('offen'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</button>
+    <div class="suche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Suchen auf dghd.de</div>
+    <div class="zg" id="zg"><span>Zeigen für</span><button data-z="">Alle</button><button data-z="L">Lehrende</button><button data-z="F">Forschende</button><button data-z="P">HD Professionals</button><button data-z="M">Leitungen</button></div>
+    <ul class="nav" id="nav"></ul>
+    <div class="unten"><a class="knopf" href="#" onclick="return false">Mitglied werden</a></div>
+  </aside>
+  <div class="faecher" id="faecher"></div>
+  <main class="inhalt" id="inhalt"></main>
+</div>
+<div class="schleier" id="schleier"></div>
+
+<div class="entwurfshinweis">Navigation · Prototyp · <a href="index.html">Übersicht</a> · <a href="design-manual.html#navigation">Gestaltungsgrundlagen</a></div>
+
+<script>
+// Datenformat: [Titel, Zielgruppen, Kinder]  Zielgruppen: L Lehrende, F Forschende, P HD Professionals, M Leitungen, leer = alle
+var AG = ["AG Civic Engagement und Service Learning","AG Curriculumentwicklung","AG Digitale Medien und Hochschuldidaktik","AG Forschendes Lernen","AG Hochschuldidaktische Regional- und Landesnetzwerke","AG Ingenieurdidaktik","AG Open Teach Ware, Lehrportale","AG Prüfen und Prüfungsdidaktik","AG Psychologie und Lehr-Lern-Forschung","AG Qualitative Feedback- und Evaluationsmethoden","AG Scholarship of Academic Development","AG Schreibdidaktik in der Hochschuldidaktik","AG Trainer und Trainerinnen","AG Transformatives Lernen und Nachhaltigkeit"].map(function(t){return [t,"LFP",null]});
+var AKKO = [["Ziele der akko","PM"],["Einladung zur Teilnahme","PM"],["Auftrag und Verfahren","PM"],["Akkreditierte Personen","LPM"],["Akkreditierte Programme und Einrichtungen","LPM"],["Kontakt zur akko","PM"],["akko-Downloads","PM"]].map(function(x){return [x[0],x[1],null]});
+
+var NEU = [
+ ["Community","",[
+   ["Community im Überblick","",null],
+   ["Arbeitsgruppen","",AG.concat([["Projektgruppe zum beruflichen Selbstverständnis","P",null]])],
+   ["Netzwerke","",[["Promovierenden-Netzwerk","F",null],["Netzwerk Tutorienarbeit an Hochschulen","LP",null],["Netzwerk Theologie und Hochschuldidaktik","LF",null],["Netzwerk Fachhochschulen / HAWs","LPM",null],["Netzwerk Orientierungs(studien)programme","LPM",null],["Heterogenität und Interkulturalität","LP",null],["Netzwerktreffen der Hochschuldidaktik in Deutschland","PM",null]]],
+   ["Kommissionen","",[["Forschungskommission","F",null],["Weiterbildungskommission","LP",null],["Akkreditierungskommission (AKKO)","PM",AKKO],["Kommunikation und Öffentlichkeitsarbeit","",null]]],
+   ["Nachwuchs","F",[["Promovierenden-Netzwerk","F",null],["dghd-Nachwuchspreis","F",null]]],
+   ["Kooperationen","",null],
+   ["Mitgliedschaft","",[["Mitglied werden","",null],["Vorteile und Mitgliedsbeiträge","",null],["Meine dghd (Login)","",null]]]
+ ]],
+ ["Wissenschaft & Praxis","",[
+   ["Wissenschaft & Praxis im Überblick","",null],
+   ["Forschung","F",[["Hochschuldidaktische Forschung","F",null],["Forschungskommission","F",null],["Nachwuchsförderung","F",null]]],
+   ["Praxis & Qualitätsentwicklung","LPM",[["Standards für die Praxis","LPM",null],["Weiterbildungskommission","LP",null],["Akkreditierung (AKKO)","PM",AKKO]]],
+   ["Themen","",[["Themenübersicht","",null],["Gesellschaftliche Bildung in der Hochschuldidaktik","LFP",null],["Hochschuldidaktik als Wissenschaft","F",null],["Learning Analytics in Hochschulen","LF",null],["KI in der Hochschullehre","LP",null]]],
+   ["Publikationen & Wissen","",[["Blickpunkt Hochschuldidaktik (Buchreihe)","F",null],["Publikationen","F",null],["Keynotes","",null],["Downloads","",null]]],
+   ["Internationales & Politik","FM",[["Internationale Kooperationen","FM",null],["Konferenzen und Publikationsmöglichkeiten","F",null],["Politik und Stellungnahmen","M",null],["Internationale Aktivitäten","F",null]]]
+ ]],
+ ["Veranstaltungen","",[["Veranstaltungen im Überblick","",null],["Veranstaltungskalender","",null],["dghd-Jahrestagung","",[["Fachtagung 2027","",null],["Vergangene Jahrestagungen, Archiv","",null]]],["Veranstaltung einreichen","",null]]],
+ ["Aktuelles & Blickwinkel","",[["Aktuelles","",null],["Blickwinkel","",null],["Nachrichtenarchiv","",null]]],
+ ["Die dghd","",[["Über die dghd","",[["Profil und Auftrag","",null],["Ziele","",null],["Geschichte und Entwicklung","",null]]],["Vorstand","",null],["Geschäftsstelle","",null],["Kooperationen","",null],["Satzung","",null],["Kontakt","",null]]],
+ ["Service","",[["Stellenbörse","LP",null],["Didaktik-Landkarte","LPM",null],["Downloads","",null],["Veranstaltung einreichen","",null],["Stellenangebot einreichen","PM",null],["Institution eintragen","M",null]]]
+];
+
+var HEUTE = [
+ ["Die dghd","",[
+   ["Der Verein","",[["Der Vorstand","",null],["Geschäftsstelle","",null],["Satzung","",null],["Kontakt","",null]]],
+   ["Die Community","",[["Kommissionen","",null],["Arbeitsgruppen","",null],["Projektgruppen","",null],["Netzwerke","",null],["Kooperationen","",null]]],
+   ["News & Informationen","",[["Stellenbörse","",null],["Veranstaltungskalender","",null],["Hochschuldidaktik-VZ","",null],["Buchreihe der dghd","",null],["dghd-Newsletter & Archiv","",null],["Downloads","",null]]],
+   ["Tagungen","",[["Tagung ausrichten","",null],["Arbeitstagungen","",null],["Fachtagungen","",null]]],
+   ["Mitglied werden","",[["Jetzt Mitglied werden","",null]]]
+ ]],
+ ["Blickwinkel","",[["Auf dem Laufenden bleiben","",[["Blickwinkel FAQ","",null],["Social Media & Netiquette","",null],["Alle Beiträge","",null],["dghd-Newsletter-Archiv","",null],["Beitrag einreichen","",null]]]]],
+ ["Community","",[
+   ["Kommissionen","",[["Akkreditierungskommission","",null],["Forschungskommission","",null],["Weiterbildungskommission","",null],["Kommunikation und Öffentlichkeitsarbeit","",null],["Projektgruppen","",null],["Projektgruppe zum beruflichen Selbstverständnis der Hochschuldidaktik","",null]]],
+   ["Arbeitsgruppen","",AG],
+   ["Netzwerke","",[["Netzwerk Fachhochschulen / HAWs","",null],["Netzwerk Theologie und Hochschuldidaktik","",null],["Promovierenden-Netzwerk","",null],["Netzwerk Tutorienarbeit an Hochschulen","",null]]],
+   ["Kooperationen","",[["Junges Forum für Medien und Hochschulentwicklung","",null],["Internationale Kooperationen","",null],["Gemeinsame AG mit der GMW","",null],["Didaktik-Landkarte","",null]]]
+ ]],
+ ["Wissenschaft & Praxis","",[
+   ["Nachwuchsförderung","",[["Promovierenden-Netzwerk","",null],["dghd-Nachwuchspreis","",null]]],
+   ["Publikationen","",[["Buchreihe der dghd","",null]]],
+   ["Akkreditierung","",AKKO],
+   ["Standards für die Praxis","",null],
+   ["Themen","",[["Gesellschaftliche Bildung in der Hochschuldidaktik","",null],["Hochschuldidaktik als Wissenschaft","",null],["Learning Analytics in Hochschulen","",null],["KI in der Hochschullehre","",null]]]
+ ]],
+ ["Login für Mitglieder","",null],
+ ["Mitgliedschaft","",[["Mitglied werden","",null]]]
+];
+
+var daten = NEU, modus = "neu", zgFilter = "", pfadOffen = [];
+var nav = document.getElementById('nav'), faecher = document.getElementById('faecher'), inhalt = document.getElementById('inhalt'), schleier = document.getElementById('schleier');
+var mobil = function(){ return window.innerWidth <= 980; };
+
+function zaehle(list){ var n=0, t=0; (function w(l,d){ l.forEach(function(e){ n++; if(d>t) t=d; if(e[2]) w(e[2],d+1); }); })(list,1); return {n:n,t:t}; }
+function passt(e){ if(!zgFilter) return true; if(!e[1]) return true; if(e[1].indexOf(zgFilter)>=0) return true; if(e[2]) return e[2].some(passt); return false; }
+
+function baueListe(list, tiefe, pfad){
+  var ul = document.createElement('ul'); if (tiefe>0) { ul.className = 'inline' + (mobil() ? ' mobil' : ''); }
+  list.forEach(function(e, i){
+    var li = document.createElement('li'); var kinder = e[2]; var key = pfad.concat(i);
+    if(!passt(e)) li.className += ' gedimmt';
+    var b = document.createElement('button'); b.type='button';
+    var pfeil = kinder ? (kinder.length>=4 && !mobil() ? '›' : '⌄') : '';
+    b.innerHTML = '<span>' + e[0] + '</span>' + (pfeil ? '<i>'+pfeil+'</i>' : '');
+    li.appendChild(b);
+    var offen = pfadOffen.length > key.length-1 && key.every(function(k,j){ return pfadOffen[j]===k; });
+    if (offen) li.classList.add('offen');
+    b.addEventListener('click', function(){
+      if (!kinder) { zeigeSeite(key); pfadOffen = key.slice(0,-1); render(); return; }
+      if (offen) { pfadOffen = key.slice(0,-1); } else { pfadOffen = key; }
+      zeigeSeite(key); render();
+    });
+    if (kinder && offen && (kinder.length < 4 || mobil())) li.appendChild(baueListe(kinder, tiefe+1, key));
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+function render(){
+  nav.innerHTML = ''; var wurzel = baueListe(daten, 0, []); while (wurzel.firstChild) nav.appendChild(wurzel.firstChild);
+  faecher.innerHTML = '';
+  if (!mobil()) {
+    var list = daten, spalten = 0;
+    for (var d=0; d<pfadOffen.length; d++){
+      var e = list[pfadOffen[d]]; if (!e || !e[2]) break;
+      if (e[2].length >= 4) {
+        var sp = document.createElement('div'); sp.className='spalte';
+        sp.innerHTML = '<h5>'+e[0]+'</h5>';
+        sp.appendChild(baueListe(e[2], 1, pfadOffen.slice(0,d+1)));
+        var ug = sp.querySelector('ul'); ug.className='';
+        sp.querySelectorAll('ul ul').forEach(function(u){ u.className='inline'; });
+        var r = document.createElement('div'); r.className='regel'; r.textContent = e[2].length + ' Unterpunkte, deshalb als Fächer. Bereiche mit bis zu drei Punkten klappen direkt auf.'; sp.appendChild(r);
+        faecher.appendChild(sp); spalten++;
+      }
+      list = e[2];
+    }
+    schleier.className = 'schleier' + (spalten ? ' an' : '');
+  } else { schleier.className='schleier'; }
+  var z = zaehle(daten);
+  document.getElementById('info').textContent = (modus==='neu' ? 'Sitemap Version 2' : 'Ist-Menü der dghd.de') + ' · ' + z.n + ' Einträge · ' + z.t + ' Ebenen · bis 3 nach unten, ab 4 als Fächer';
+}
+
+function zeigeSeite(key){
+  var list = daten, pfad = [], e;
+  key.forEach(function(k){ e = list[k]; pfad.push(e[0]); list = e[2] || []; });
+  var organ = /^AG |Netzwerk|kommission|AKKO|Projektgruppe/i.test(e[0]) && !e[2];
+  var kat = pfad[0];
+  inhalt.innerHTML = '<div class="pfad">Startseite › ' + pfad.slice(0,-1).map(function(p){return p+' › '}).join('') + '<b>' + e[0] + '</b></div>'
+    + '<h1>' + e[0] + '</h1>'
+    + '<p class="lead">' + (organ ? 'Organ-Seite: Die Gruppe pflegt hier ihre Beiträge, Termine und Ansprechpersonen selbst. Alles, was sie veröffentlicht, erscheint auch unter Aktuelles und im Kalender.' : 'Beispielinhalt. So sieht der Weg zu dieser Seite in der Navigation aus. Der Text entsteht später mit der Geschäftsstelle.') + '</p>'
+    + '<div class="tags"><span class="schlagwort">' + kat + '</span>' + (e[1] ? e[1].split('').map(function(c){ return '<span class="schlagwort lila">' + ({L:'Lehrende',F:'HD Forschende',P:'HD Professionals',M:'Management'})[c] + '</span>'; }).join('') : '<span class="schlagwort lila">alle Zielgruppen</span>') + '</div>'
+    + (organ ? '<div class="organ"><div class="modkarte"><span class="schlagwort">Beiträge</span><h4>Neues aus der Gruppe</h4><p>Die letzten drei Beiträge des Organ-Accounts.</p></div><div class="modkarte rot"><span class="schlagwort rot">Termine</span><h4>Nächste Treffen</h4><p>Aus dem Veranstaltungskalender gefiltert.</p></div><div class="modkarte lila"><span class="schlagwort lila">Ansprechpersonen</span><h4>Sprecherinnen und Sprecher</h4><p>Kontakt und Mitmachen.</p></div></div>' : '')
+    + '<div class="text"><div class="h" style="width:92%"></div><div class="h" style="width:78%"></div><div class="h" style="width:85%"></div><div class="h" style="width:60%"></div></div>'
+    + (e[2] ? '<div class="statistik"><b>' + e[2].length + ' Unterpunkte</b>' + (e[2].length>=4 ? 'Vier oder mehr, deshalb öffnet sich dieser Bereich als Fächer neben der Seitenleiste, auf dem Smartphone untereinander.' : 'Bis zu drei, deshalb klappen sie direkt unter dem Punkt auf.') + '</div>' : '');
+}
+
+function start(){
+  inhalt.innerHTML = '<div class="pfad">Startseite</div><h1>So findet man sich auf der neuen dghd.de zurecht</h1><p class="lead">Links die Seitenleiste nach dem Vorbild der NYU. Ein Klick auf einen Bereich zeigt seine Unterpunkte: bis zu drei direkt darunter, ab vier als Fächer zur Seite, so wie es der Menü-Prototyp der Geschäftsstelle vorsieht. Jeder Eintrag lässt sich anklicken und zeigt die Seite dahinter.</p>'
+    + '<div class="tags"><span class="schlagwort">Sitemap Version 2</span><span class="schlagwort rot">alle drei Ebenen</span><span class="schlagwort lila">Zielgruppen als Filter</span></div>'
+    + '<div class="statistik"><b>Zwei Wege durch dieselbe Struktur</b><ul><li><b style="font-size:15px;display:inline;font-family:var(--sans)">Nach Themen:</b> die sieben Bereiche in der Seitenleiste.</li><li><b style="font-size:15px;display:inline;font-family:var(--sans)">Nach Zielgruppe:</b> oben „Zeigen für“ wählen, dann treten alle Einträge zurück, die diese Gruppe nicht betreffen. Die Zuordnung ist ein erster Vorschlag, die Geschäftsstelle ergänzt sie mit den Organen.</li><li><b style="font-size:15px;display:inline;font-family:var(--sans)">Zum Vergleich:</b> oben rechts auf das heutige Menü umschalten, mit denselben Regeln.</li></ul></div>';
+}
+
+document.getElementById('umNeu').addEventListener('click', function(){ daten=NEU; modus='neu'; pfadOffen=[]; this.classList.add('an'); document.getElementById('umHeute').classList.remove('an'); start(); render(); });
+document.getElementById('umHeute').addEventListener('click', function(){ daten=HEUTE; modus='heute'; pfadOffen=[]; this.classList.add('an'); document.getElementById('umNeu').classList.remove('an'); inhalt.innerHTML='<div class="pfad">Startseite</div><h1>Das heutige Menü, mit denselben Regeln dargestellt</h1><p class="lead">Fünf Hauptpunkte, drei Ebenen, 88 Einträge. Community-Inhalte liegen an mehreren Stellen (unter „Die dghd“ und unter „Community“), Stellen, Termine und Downloads stecken unter „News & Informationen“. Genau das räumt die neue Struktur auf.</p>'; render(); });
+document.querySelectorAll('#zg button').forEach(function(b){ b.addEventListener('click', function(){ zgFilter=b.dataset.z; document.querySelectorAll('#zg button').forEach(function(x){x.classList.toggle('an',x===b)}); render(); }); });
+schleier.addEventListener('click', function(){ pfadOffen=[]; render(); });
+function messeTop(){ document.documentElement.style.setProperty('--topH', document.querySelector('.top').offsetHeight + 'px'); }
+window.addEventListener('resize', function(){ messeTop(); render(); }); messeTop();
+document.querySelector('#zg button').classList.add('an');
+start(); render();
+</script>
+</body>
+</html>
